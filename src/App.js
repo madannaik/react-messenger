@@ -1,13 +1,15 @@
-import React from 'react';
-import {SearchOutlined } from "@material-ui/icons";
-import { IconButton } from "@chakra-ui/react";
-import { DrawerExample } from './components/drawer';
-const App = () =>{
-  return(
-      <div>
-        <DrawerExample/>
-      </div>
+import React from "react";
+import "./App.css";
+import Nav from "./components/nav/Nav";
+import ChatBody from "./components/chatBody/ChatBody";
 
-  )
-};
+function App() {
+  return (
+    <div className="__main">
+      <Nav />
+      <ChatBody />
+    </div>
+  );
+}
+
 export default App;
