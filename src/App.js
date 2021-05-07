@@ -1,13 +1,25 @@
-import React from 'react';
-import {SearchOutlined } from "@material-ui/icons";
-import { IconButton } from "@chakra-ui/react";
-import { DrawerExample } from './components/drawer';
-const App = () =>{
-  return(
-      <div>
-        <DrawerExample/>
-      </div>
+import logo from './logo.svg';
+import './App.css';
 
-  )
-};
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
 export default App;
