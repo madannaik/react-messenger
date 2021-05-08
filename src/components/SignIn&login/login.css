@@ -1,0 +1,61 @@
+.maindiv{
+    position: absolute;
+    width: 0;
+	height: 0;
+	border-right: 100vw solid transparent;
+	border-bottom: 100vh solid #03045e;
+}
+img{
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+
+}
+.signinlogo{
+    width: 180px;
+    height: 180px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.letters{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.login-letters{
+    font-size: 1.5rem;
+}
+.margin-right{
+    margin-left: 30px;
+}
+.logindiv{
+    width: 50vw;
+    height: 50vh;
+    position: absolute;
+    background-color: #6930c3;
+    transform: translate(-50%,-50%);
+    top: 50vh;
+    left: 50vw;
+    border-radius:5px ;
+    z-index: 6;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.loginbox{
+    margin: 5px 20px 20px 20px;
+    width: 23vw;
+    padding: 10px;
+}
+.line{
+    margin: 1rem;
+
+}
+/* 
+#48cae4;
+
+*/
