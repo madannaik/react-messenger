@@ -50,10 +50,21 @@ img{
     margin: 5px 20px 20px 20px;
     width: 23vw;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .line{
     margin: 1rem;
+  
+}
 
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.3rem;
 }
 /* 
 #48cae4;
