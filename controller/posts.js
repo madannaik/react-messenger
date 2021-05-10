@@ -18,7 +18,7 @@ export const getPosts = async (req, res) => {
                     if (!isMatch) {
                         res.status(400).json({ message: "Can't even remembe a password" });
                       } else {
-                        res.json({ message: "user signed successfully!" });
+                        res.json({ message: "user signed successfully!" ,status:"200"});
                       }
                     
                 } else {

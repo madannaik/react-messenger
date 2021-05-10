@@ -6,19 +6,16 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure,
     Button,
     Stack,
     Box,
     FormLabel,
     Input,
   } from "@chakra-ui/react";
-import {AddIcon} from "@chakra-ui/icons"
 import {useRef} from "react";
 
 export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
     const firstField = useRef()
-  
     return (
       <>
         
@@ -49,10 +46,11 @@ export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
             </DrawerBody>
   
             <DrawerFooter borderTopWidth="1px">
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
+            <Button colorScheme="blue">Log Out</Button>
+              <Button variant="outline" mr={3} ml={3} onClick={onClose}>
+                EditProfile
               </Button>
-              <Button colorScheme="blue">Submit</Button>
+              <Button colorScheme="blue">Friends</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

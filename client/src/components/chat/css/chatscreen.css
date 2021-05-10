@@ -34,12 +34,14 @@
 
 ::-webkit-scrollbar-thumb {
     background: #fe6d73; 
+ 
   }
 .userdata::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
 .userdata::-webkit-scrollbar{
     width: 2px;
+
 }
 .singlecard{
     width: 100%;
@@ -51,11 +53,19 @@
     flex-wrap: nowrap;
     margin: 3px 0;
 }
+.singlecard:hover{
+    background-color: aquamarine;
+}
+
 .avatar{
     width: 30%;
     height: 9vh;
     padding: 0;
     margin: 0;
+    
+}
+img{
+    border-radius: 50%;
 }
 .username{
     margin: 0.9rem;

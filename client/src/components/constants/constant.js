@@ -1,0 +1,22 @@
+export const names = [
+    "Liam",
+    "Olivia",
+    "Noah",
+    "Emma",
+    "Oliver",
+    "Ava",
+    "William",
+    "Sophia",
+    "Elijah",
+    "Isabella",
+    "James",
+    "Charlotte",
+    "Benjamin",
+    "Amelia",
+    "Lucas",
+    "Mia",
+    "Mason",
+    "Harper",
+    "Ethan",
+    "Evelyn"
+];

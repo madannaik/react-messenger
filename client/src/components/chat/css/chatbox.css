@@ -1,0 +1,18 @@
+.chatarea{
+    width: 100%;
+    height: 100%;
+}
+.chatuserdata{
+    display: inline;
+    margin: 0;
+}
+
+.chatusericon{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    margin:1rem 1rem;
+}
+img{
+    border-radius: 3rem;
+}

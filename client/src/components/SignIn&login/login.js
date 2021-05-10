@@ -3,13 +3,14 @@ import { React, useState } from "react"
 import { Input} from "@chakra-ui/react";
 import { Divider, Button ,useToast} from "@chakra-ui/react";
 import chat from "../../svg/webpage.svg";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 export const Login = () => {
     const toast = useToast();
     const [isloading, setisloading] = useState(false);
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
- 
+    let history = useHistory();
     const handleChangeEmail = (event) => setemail(event.target.value);
     const handleChangePassword = (event) => setpassword(event.target.value);
 
@@ -45,6 +46,8 @@ export const Login = () => {
                     isClosable: true,
                   });
                   if(data.status ==="200"){
+            
+                    history.push('/chat')
                       console.log("you can go further");
                   }
                
