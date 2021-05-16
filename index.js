@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import post from './routes/firstroute.js'
+import post from './controller/firstroute.js'
 import { getPosts } from './controller/posts.js';
 const app = express();  
 app.use(bodyParser.json({extended:true}));

@@ -3,18 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { ChakraProvider } from '@chakra-ui/react';
-import { createStore } from "redux";
-import { DrawerReducer } from './reducers/loggedInuserdata';
-// import { Provider } from "react-redux";
-// const store = createStore(DrawerReducer);
+import { configureStore,combineReducers } from "@reduxjs/toolkit";
+import { reducers} from './store/login';
+import {currentChatReducer} from './store/currentchatuser'
+import { Provider } from "react-redux";
+const combindedReducers  = combineReducers({
+        User : reducers,
+        Chat:currentChatReducer,
+
+})
+const store = configureStore({reducer:combindedReducers});
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      
+    <Provider store={store}>
+      <ChakraProvider>
         <App />
-
-    </ChakraProvider>
+      </ChakraProvider>
+    </Provider>
   </React.StrictMode>
   ,
   document.getElementById('root')

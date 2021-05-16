@@ -12,10 +12,12 @@ import {
     FormLabel,
     Input,
   } from "@chakra-ui/react";
-import {useRef} from "react";
-
+import {useRef,useContext} from "react";
+import { ReactReduxContext } from 'react-redux';
 export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
     const firstField = useRef()
+    const context = useContext(ReactReduxContext);
+
     return (
       <>
         
@@ -29,7 +31,7 @@ export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth="1px">
-              Create a new account
+            {/* {context.store.replaceReducer("User")} */}Madan
             </DrawerHeader>
   
             <DrawerBody>

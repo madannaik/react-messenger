@@ -1,10 +1,14 @@
 import "./login.css";
-import { React, useState } from "react"
+import { React, useState,useContext } from "react"
 import { Input} from "@chakra-ui/react";
 import { Divider, Button ,useToast} from "@chakra-ui/react";
-import chat from "../../svg/webpage.svg";
+import chat from "../../svg/user.svg";
 import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {ReactReduxContext} from 'react-redux';
+import {userLogged} from '../../store/login'
+
+
 export const Login = () => {
     const toast = useToast();
     const [isloading, setisloading] = useState(false);
@@ -13,7 +17,8 @@ export const Login = () => {
     let history = useHistory();
     const handleChangeEmail = (event) => setemail(event.target.value);
     const handleChangePassword = (event) => setpassword(event.target.value);
-
+    const context = useContext(ReactReduxContext);
+    console.log(context.store.getState());
 
     const handleSubmit = ()=>{
         setisloading(true);
@@ -26,6 +31,7 @@ export const Login = () => {
                 duration: 9000,
                 isClosable: true,
               });
+              
         }
         else{
             const requestOptions = {
@@ -46,7 +52,11 @@ export const Login = () => {
                     isClosable: true,
                   });
                   if(data.status ==="200"){
-            
+                    context.store.dispatch(userLogged({
+                        id:data.id,
+                        username:data.username,
+                        email:data.email
+                    }));
                     history.push('/chat')
                       console.log("you can go further");
                   }
@@ -79,11 +89,12 @@ export const Login = () => {
 
             </div>
             <div className="logo">
-                <img src={chat} className="signinlogo" alt={"logo"} />
+                <img src={chat} className="signinlogo stylesvg"  alt={"logo"} />
                 <p className="letters margin-right">Dont have an account?</p>
                 <Link to="/signup">
                     <p className="letters margin-right">Sing Up</p>
                 </Link>
+                
                 
             </div>
         </div>

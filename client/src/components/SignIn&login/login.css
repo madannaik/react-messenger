@@ -5,11 +5,10 @@
 	border-right: 100vw solid transparent;
 	border-bottom: 100vh solid #03045e;
 }
-img{
+.stylesvg{
     width: 200px;
     height: 200px;
     margin-left: 20px;
-
 }
 .signinlogo{
     width: 180px;
@@ -33,7 +32,7 @@ img{
 }
 .logindiv{
     width: 50vw;
-    height: 50vh;
+    height: 308px;
     position: absolute;
     background-color: #6930c3;
     transform: translate(-50%,-50%);
@@ -55,8 +54,7 @@ img{
     justify-content: center;
 }
 .line{
-    margin: 1rem;
-  
+    margin: 1rem;  
 }
 
 .logo{
@@ -64,7 +62,7 @@ img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 1.3rem;
+    /* margin-left: 1.3rem; */
 }
 /* 
 #48cae4;

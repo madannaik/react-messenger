@@ -3,7 +3,7 @@ import {  Divider, Input } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { DrawerMenu } from "./Drawer";
 import { React, useState,  } from "react";
-import Avatar from "../../svg/avatar.svg"
+import Avatar from "../../svg/boy.svg"
 import "./css/chatscreen.css"
 import { names } from "../constants/constant"
 import { IconButton } from "@chakra-ui/react"

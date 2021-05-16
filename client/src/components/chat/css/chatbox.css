@@ -1,18 +1,65 @@
 .chatarea{
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
+    margin: 1rem 1rem;
+    background-color: rgb(255, 255, 255);
 }
 .chatuserdata{
     display: inline;
     margin: 0;
+    position: relative;
 }
 
 .chatusericon{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 3rem;
-    margin:1rem 1rem;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.274);
+    padding: 0;
+    margin-left: 1rem;
+    margin-top:1rem;
+    display: flex;
+    justify-content: start;
 }
-img{
-    border-radius: 3rem;
+
+.chatavatar{
+    object-fit: fill;
+    margin: 0.3rem 0rem 0.3rem 0.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+.chatusername{
+    margin: 0.7rem 0.5rem;
+    font-weight: bold;
+    
+}
+.chatdisplayspace{
+    height: 60vh;
+    margin: 10px 10px;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar-thumb {
+    background: #fe6d73; 
+ 
+  }
+.chatdisplayspace::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+.chatdisplayspace::-webkit-scrollbar{
+    width: 2px;
+}
+.chatexchange{
+    display: flex;
+    width: 50vw;
+    margin: 0 0 0 1rem ;
+    padding: 10px;
+    border-radius: 15px;
+    background-color:#ade8f4;
+    
+}
+.catchusertext{
+    border-color:"#660708";
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0 1rem 0 0;
+
 }

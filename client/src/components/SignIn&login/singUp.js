@@ -78,7 +78,7 @@ export const SignUp = () => {
 
             </div>
             <div className="logo">
-                <img src={chat} width="300" height="300" alt={"logo"} />
+                <img src={chat} className="stylesvg" width="300" height="300" alt={"logo"} />
                 <p className="letters margin-right">Already have an account?</p>
                 <Link to={{
                     pathname: "/",
