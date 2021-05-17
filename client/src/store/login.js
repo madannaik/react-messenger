@@ -9,6 +9,9 @@ const initialState = {
     id: '',
     username: '',
     email: '',
+    friens:{},
+    repuests:{},
+    avatar_id:"",
   },
   isLoggedIn: false
 }

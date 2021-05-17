@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 const combindedReducers  = combineReducers({
         User : reducers,
         Chat:currentChatReducer,
-
 })
 const store = configureStore({reducer:combindedReducers});
 

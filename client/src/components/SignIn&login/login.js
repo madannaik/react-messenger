@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {ReactReduxContext} from 'react-redux';
 import {userLogged} from '../../store/login'
-
+import { useSelector, useDispatch } from 'react-redux'
 
 export const Login = () => {
     const toast = useToast();
