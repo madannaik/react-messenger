@@ -2,8 +2,10 @@ import {
     Drawer,
     DrawerBody,
     DrawerFooter,
+    DrawerHeader,
     DrawerOverlay,
     DrawerContent,
+    DrawerCloseButton,
     Button,
     Stack,
     Box,
@@ -27,17 +29,18 @@ export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
         >
           <DrawerOverlay />
           <DrawerContent>
-            {/* <DrawerCloseButton /> */}
-            {/* <DrawerHeader borderBottomWidth="1px">
-            {context.store.replaceReducer("User")}Madan
-            </DrawerHeader> */}
+            <DrawerCloseButton />
+            <DrawerHeader borderBottomWidth="1px">
+            {/* {context.store.replaceReducer("User")} */}Madan
+            </DrawerHeader>
+  
             <DrawerBody>
               <Stack spacing="24px">
                 <Box>
                   <FormLabel htmlFor="username">Name</FormLabel>
                   <Input
                     ref={firstField}
-                    id="Search"
+                    id="username"
                     placeholder="Please enter user name"
                   />
                 </Box>               
