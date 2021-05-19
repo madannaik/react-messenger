@@ -2,7 +2,10 @@
 import express from 'express';
 import SignUpModel from '../models/dataschema.js';
 
+
 const app = express.Router();
+
+
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send({ status: 'ok' }));
 app.post("/",async function (req, res) {

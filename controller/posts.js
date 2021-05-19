@@ -1,9 +1,9 @@
 import SignUpModel from '../models/dataschema.js';
-import compare from "express";
+
 
 export const getPosts = async (req, res) => {
     const { email, password } = req.body;
-    console.log(req.body);
+    console.log(req.body ,"1");
     try {
         SignUpModel.findOne({ email: email }, async function (err, docs) {
             if (err) {

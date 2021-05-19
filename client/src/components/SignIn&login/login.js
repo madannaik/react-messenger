@@ -7,7 +7,8 @@ import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {ReactReduxContext} from 'react-redux';
 import {userLogged} from '../../store/login'
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
+
 
 export const Login = () => {
     const toast = useToast();
@@ -31,7 +32,6 @@ export const Login = () => {
                 duration: 9000,
                 isClosable: true,
               });
-              
         }
         else{
             const requestOptions = {
@@ -42,9 +42,8 @@ export const Login = () => {
             fetch('http://localhost:5000/login', requestOptions)
             .then(response => response.json())
             .then(data =>{
-               
                    setisloading(false)
-                toast({
+                    toast({
                     title: `${data.message}`,
                     description: "Dumbass.",
                     status: "success",
