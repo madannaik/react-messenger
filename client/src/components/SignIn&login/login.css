@@ -68,3 +68,128 @@
 #48cae4;
 
 */
+
+
+/*320px — 480px: Mobile devices.*/
+/*481px — 768px: iPads, Tablets.*/
+/*769px — 1024px: Small screens, laptops.*/
+/*1025px — 1200px: Desktops, large screens.*/
+
+@media only screen and (max-width: 480px){
+    .maindiv {
+        border-right: 0;
+        border-bottom: 0;
+        width: 100vw;
+        height: 80vh;
+        box-sizing: content-box;
+        padding-top: 15px;
+        position: relative;
+        background: #03045e;
+        color: white;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .maindiv:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 11vh solid #fff;
+        border-left: 50vw solid transparent;
+        border-right: 50vw solid transparent;
+    }
+    .logindiv{
+        width: 70vw;
+        height: auto;
+    }
+    .loginbox{
+        width: 90%;
+    }
+    .line{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .logindiv .mobile > p{
+        margin-top: 1vh;
+        font-size: 0.5rem ;
+        font-weight: bold;
+    }
+    .mobile{
+        color: white;
+    }
+
+}
+@media only screen and (max-width: 768px){
+    .mobile{
+        color: white;
+    }
+    .logindiv{
+        width: 70vw;
+
+    }
+    .loginbox{
+        width: 90%;
+    }
+    .line{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+
+}
+@media only screen and (max-width: 1024px){
+    .mobile{
+        display: none;
+    }
+    .logindiv{
+        width: 55vw;
+    }
+
+    .stylesvg{
+        width: 150px;
+        height: 150px;
+        margin-left: 1vw;
+    }
+
+    .stylesvg{
+        margin-left: 30px;
+    }
+    p.letters.margin-right{
+        margin-left: 10px;
+        margin-right: 0;
+    }
+}
+@media only screen and (max-width: 1200px){
+    .mobile{
+        display: none;
+    }
+    .stylesvg{
+        margin-left: 20px;
+    }
+    p.letters.margin-right{
+        margin-left: 30px;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 1340px){
+    .mobile{
+        display: none;
+    }
+
+}
+@media only screen and (max-width: 1680px){
+    .mobile{
+        display: none;
+    }
+
+
+}
+

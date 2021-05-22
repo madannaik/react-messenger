@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// const USER_LOGGED = "userLogged";
 
-// const LoggedUser = configureStore("USER_LOGGED");
 
 const initialState = {
   profile: {
@@ -18,6 +16,7 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     "userLogged": (state, action) => {
+
       return {
         ...state,
         profile: {

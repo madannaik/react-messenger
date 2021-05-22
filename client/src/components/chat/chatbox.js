@@ -2,31 +2,34 @@ import Avatar from "../../svg/boy.svg"
 import "./css/chatbox.css"
 import { Image, Box, Input ,Button} from "@chakra-ui/react";
 import {ArrowRightIcon} from "@chakra-ui/icons";
-<<<<<<< HEAD
 import Chatbubble from './chatbubble';
-import { io } from "socket.io-client";
-
-
-=======
->>>>>>> parent of c1ff260 (on pause for 2 days)
+import {io} from 'socket.io-client';
+import {useEffect} from 'react';
 export const ChatBox = () => {
+    const connect = () =>{
+        const socketData = io("http://localhost:5000",{reconnection:false});
+        const tryReconnect = () => {
+            setTimeout(() => {
+                socketData.io.open((err) => {
+                    if (err) {
+                        tryReconnect();
+                    }
+                });
+            }, 20);
+        }
+        socketData.io.on("close", tryReconnect);
+        socketData.on("connect", () => {
+            console.log(socketData.id);
+        });
+    }
+    useEffect(() => {
+        connect();
+    }, []);
 
-    // const socketData = io("localhost:5000",{reconnection:false});
-    //
-    // const tryReconnect = () => {
-    //     setTimeout(() => {
-    //         socketData.io.open((err) => {
-    //             if (err) {
-    //                 tryReconnect();
-    //             }
-    //         });
-    //     }, 2000);
-    // }
-    // socketData.io.on("close", tryReconnect);
-    // socketData.on("connect", () => {
-    //     console.log(socketData.id);
-    // });
-    //
+
+
+
+
 
     return <>
         <div className="chatarea">
@@ -36,7 +39,13 @@ export const ChatBox = () => {
                     <Box className="chatusername">Dave</Box>
                 </div>
                 <div className="chatdisplayspace">
-                    
+                    {Array.from(new Array(100)).map((data) => {
+                            return <>
+                                <Chatbubble />
+                            </>
+                        }
+
+                    )}
                 </div>
                 <div className="chatexchange">
                     <Input variant="filled" placeholder="filled" className="catchusertext" />

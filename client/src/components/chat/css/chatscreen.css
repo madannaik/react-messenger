@@ -51,6 +51,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-start;
     margin: 3px 0;
 }
 .singlecard:hover{
@@ -58,18 +59,38 @@
 }
 
 .avatar{
-    width: 30%;
+    width: 100%;
     height: 9vh;
     padding: 0;
     margin: 0;
-    
-}
-img{
     border-radius: 50%;
 }
-.username{
-    margin: 0.9rem;
+
+
+.card-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 70%;
 }
+
+.card-details .username{
+    font-family: News;
+    margin-top: 1.1vh;
+}
+
+.card-details > p{
+    font-size: 0.6rem;
+}
+.singlecard > span{
+    width: 4px;
+    height: 4px;
+    background: green;
+    border-radius: 4px;
+    display: inline;
+    margin-top: 3.8vh;
+}
+
 .chatdiv{
     width: 55vw;
     height:84vh;

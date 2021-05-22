@@ -2,7 +2,7 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import {  Divider, Input } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { DrawerMenu } from "./Drawer";
-import { React, useState,  } from "react";
+import {React, useEffect, useState} from 'react';
 import Avatar from "../../svg/boy.svg"
 import "./css/chatscreen.css"
 import { names } from "../constants/constant"
@@ -11,10 +11,22 @@ import { IconButton } from "@chakra-ui/react"
 import { ChatBox } from "./chatbox";
 
 export const ChatScreen = () => {
+
+    useEffect(()=>{
+        const requestOptions = {
+            method: 'POST'
+        }
+        fetch('http://127.0.0.1:5000/getUser',requestOptions)
+        .then(getResponse => getResponse.json())
+        .then(data=>setNames(data))
+            .catch(err =>console.log(err));
+    },[]);
+
+
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // const [Names, setNames] = useState(names)
+    const [Names, setNames] = useState([]);
     const [input, setinput] = useState("")
-    // const [isSelected, setisSelected] = useState(false)
+
 
     const handlechange = (event) => setinput(event.target.value);
     const handleClick = (event) => {
@@ -37,13 +49,23 @@ export const ChatScreen = () => {
                         <Divider orientation="horizontal" />
                     </span>
                     <div className="userdata">
-                        {names.map((data) => {
-                            return <div className="singlecard" onClick={handleClick} id={data}>
-                                <img src={Avatar}
-                                    alt={"avatar"}
-                                    className="avatar"
-                                />
-                                <h6 className="username">{data}</h6>
+                        {Names.map((data) => {
+                            return <div className="singlecard" onClick={handleClick} id={data.email} >
+                                <div style={{width:"25%",padding:0}}>
+                                    <img src={Avatar}
+                                         alt={"avatar"}
+                                         className="avatar"
+                                    />
+                                </div>
+
+
+                                <div className="card-details">
+                                    <h6 className="username">{data.username}</h6>
+
+                                    <p>Online</p>
+                                </div>
+                                <span className="status"></span>
+
                             </div>
                         })}
                     </div>

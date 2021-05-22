@@ -37,6 +37,8 @@
     height: 60vh;
     margin: 10px 10px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 ::-webkit-scrollbar-thumb {
     background: #fe6d73; 
@@ -55,11 +57,9 @@
     padding: 10px;
     border-radius: 15px;
     background-color:#ade8f4;
-    
 }
 .catchusertext{
     border-color:"#660708";
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: 0 1rem 0 0;
-
 }

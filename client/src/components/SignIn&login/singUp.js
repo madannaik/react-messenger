@@ -35,10 +35,10 @@ export const SignUp = () => {
             fetch('http://localhost:5000/', requestOptions)
             .then(response => response.json())
             .then(data =>{
-               
+                    console.log(data);
                    setisloading(false)
-                toast({
-                    title: `${data.messege}`,
+                    toast({
+                    title: `${data.message}`,
                     description: "Dumbass.",
                     status: "success",
                     duration: 9000,
@@ -53,7 +53,9 @@ export const SignUp = () => {
         }
     }
     return <div className="maindiv">
+
         <div className="logindiv">
+
             <div className="loginbox">
                 <div className="letters">SIGN UP</div>
                 <Input placeholder="User Name" _placeholder={{ color: '#161a1d' }} borderColor={"#003049"} textColor={"white"} marginBottom={"5"} onChange={handleChangeUsername}/>
@@ -71,6 +73,14 @@ export const SignUp = () => {
                 >
                     Submit
                 </Button >
+                <div className="mobile">
+                    <p className="mobile-p">Already have an account?</p>
+                    <Link to={{
+                        pathname: "/",
+                    }}>
+                        <p className="mobile-p" >Log In</p>
+                    </Link>
+                </div>
             </div>
             <div className="line">
 
@@ -88,5 +98,6 @@ export const SignUp = () => {
                 
             </div>
         </div>
+
     </div>
 }

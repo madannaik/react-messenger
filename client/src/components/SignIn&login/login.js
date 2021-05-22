@@ -7,10 +7,6 @@ import {Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {ReactReduxContext} from 'react-redux';
 import {userLogged} from '../../store/login'
-<<<<<<< HEAD
-// import { useSelector, useDispatch } from 'react-redux'
-=======
->>>>>>> parent of c1ff260 (on pause for 2 days)
 
 
 export const Login = () => {
@@ -84,6 +80,12 @@ export const Login = () => {
                 >
                     Submit
                 </Button>
+                <div className="mobile">
+                    <p className="">Dont have an account?</p>
+                    <Link to="/signup">
+                        <p className="">Sing Up</p>
+                    </Link>
+                </div>
             </div>
             <div className="line">
 
