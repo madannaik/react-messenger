@@ -39,7 +39,7 @@ export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth="1px">
-            {/* {context.store.replaceReducer("User")} */}Madan
+            {context.store.getState().profile.username}
             </DrawerHeader>
   
             <DrawerBody>

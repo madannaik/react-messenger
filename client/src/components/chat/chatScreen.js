@@ -53,7 +53,7 @@ export const ChatScreen = () => {
                     <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
                         <IconButton icon={<HamburgerIcon />} colorScheme="blackAlpha" aria-label="menu" onClick={onOpen} marginRight={1} />
 
-                        <Input variant="outline" placeholder="Search user" onChange={handlechange} />
+                        <Input variant="outline" color="white" placeholder="Search user" onChange={handlechange} />
 
                     </div>
 

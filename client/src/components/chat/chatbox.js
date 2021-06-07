@@ -39,7 +39,7 @@ export const ChatBox = ({username,receiverID}) => {
             const msg = {from:from,to:username,text:text,date:todaysDate};
             setMessages(messages => [...messages,msg]);
             await socketData.emit("send_message",data);
-            console.log("sending....");
+            console.log("data sent");
             scrollToBottom();  
         
         }
