@@ -12,11 +12,19 @@ import {
     FormLabel,
     Input,
   } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 import {useRef,useContext} from "react";
 import { ReactReduxContext } from 'react-redux';
+import {userLoggedOut} from "../../store/login"
 export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
     const firstField = useRef()
     const context = useContext(ReactReduxContext);
+    let history = useHistory();
+    const logOut = ()=>{
+      context.store.dispatch(userLoggedOut());
+      history.push("/")
+    }
+
 
     return (
       <>
@@ -48,7 +56,7 @@ export const DrawerMenu = ({isOpen, onOpen, onClose}) => {
             </DrawerBody>
   
             <DrawerFooter borderTopWidth="1px">
-            <Button colorScheme="blue">Log Out</Button>
+            <Button colorScheme="blue" onClick={logOut}>Log Out</Button>
               <Button variant="outline" mr={3} ml={3} onClick={onClose}>
                 EditProfile
               </Button>

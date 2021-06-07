@@ -34,7 +34,7 @@
     
 }
 .chatdisplayspace{
-    height: 60vh;
+    height: 75vh;
     margin: 10px 10px;
     overflow-y: scroll;
     display: flex;
@@ -52,14 +52,21 @@
 }
 .chatexchange{
     display: flex;
-    width: 50vw;
+    /* width: 70vw; */
     margin: 0 0 0 1rem ;
     padding: 10px;
     border-radius: 15px;
-    background-color:#ade8f4;
+    /* background-color:#ade8f4; */
 }
-.catchusertext{
+
+.chatexchange .catchusertext{
     border-color:"#660708";
+    width: 70vw;
+    background-color: #9381ff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: 0 1rem 0 0;
+}
+
+.chatexchange .send-button{
+    width: 10vw;
 }

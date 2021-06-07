@@ -64,18 +64,17 @@
     align-items: center;
     /* margin-left: 1.3rem; */
 }
+
+
 /* 
 #48cae4;
 
 */
 
 
-/*320px — 480px: Mobile devices.*/
-/*481px — 768px: iPads, Tablets.*/
-/*769px — 1024px: Small screens, laptops.*/
-/*1025px — 1200px: Desktops, large screens.*/
 
-@media only screen and (max-width: 480px){
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
     .maindiv {
         border-right: 0;
         border-bottom: 0;
@@ -105,9 +104,12 @@
     .logindiv{
         width: 70vw;
         height: auto;
+        position: relative;
+        top: 50%;
     }
     .loginbox{
-        width: 90%;
+        width: 100vw;
+
     }
     .line{
         display: none;
@@ -122,10 +124,11 @@
     }
     .mobile{
         color: white;
+        display: inline;
     }
 
 }
-@media only screen and (max-width: 768px){
+@media only screen and (min-width: 481px)and (max-width: 768px){
     .mobile{
         color: white;
     }
@@ -142,9 +145,13 @@
     .logo{
         display: none;
     }
+    .mobile{
+        display: block;
+        height: auto;
+    }
 
 }
-@media only screen and (max-width: 1024px){
+@media only screen and (min-width: 769px)and (max-width: 1024px){
     .mobile{
         display: none;
     }
@@ -166,10 +173,8 @@
         margin-right: 0;
     }
 }
-@media only screen and (max-width: 1200px){
-    .mobile{
-        display: none;
-    }
+@media only screen and (min-width: 1025px)and (max-width: 1200px){
+
     .stylesvg{
         margin-left: 20px;
     }
@@ -179,17 +184,11 @@
     }
 }
 
-@media only screen and (max-width: 1340px){
+@media only screen and (min-width: 1201px){
     .mobile{
         display: none;
     }
 
 }
-@media only screen and (max-width: 1680px){
-    .mobile{
-        display: none;
-    }
 
-
-}
 

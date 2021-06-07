@@ -1,36 +1,48 @@
 import { useDisclosure } from "@chakra-ui/hooks";
-import {  Divider, Input } from "@chakra-ui/react";
+import { Divider, Input } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { DrawerMenu } from "./Drawer";
-import {React, useEffect, useState} from 'react';
+import {names} from "../constants/misc";
+import { React, useContext, useEffect, useState } from 'react';
 import Avatar from "../../svg/boy.svg"
 import "./css/chatscreen.css"
-import { names } from "../constants/constant"
+
 import { IconButton } from "@chakra-ui/react"
 // import { EditProfile } from "./editprofile";
 import { ChatBox } from "./chatbox";
+import { ReactReduxContext } from "react-redux";
 
 export const ChatScreen = () => {
-
-    useEffect(()=>{
+    const context = useContext(ReactReduxContext);
+    const loggedUser = context.store.getState().profile.username;
+    useEffect(() => {
         const requestOptions = {
             method: 'POST'
         }
-        fetch('http://127.0.0.1:5000/getUser',requestOptions)
-        .then(getResponse => getResponse.json())
-        .then(data=>setNames(data))
-            .catch(err =>console.log(err));
-    },[]);
+        fetch('http://127.0.0.1:5000/getUser', requestOptions)
+            .then(getResponse => getResponse.json())
+            .then(data => {
+                setNames(data);
+                // console.log(data);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [Names, setNames] = useState([]);
-    const [input, setinput] = useState("")
+    const [input, setinput] = useState("");
+    const [currentuser, setCurrentUser] = useState('')
+    const [currentUserId, setCurrentUserId] = useState('')
+
 
 
     const handlechange = (event) => setinput(event.target.value);
     const handleClick = (event) => {
-        console.log(event.target.id);
+        setCurrentUser(event.username);
+        setCurrentUserId(event._id);
+        // console.log(currentuser);
+        // console.log(currentUserId);
     };
     return <>
         <div>
@@ -39,10 +51,10 @@ export const ChatScreen = () => {
             <div className="chatmaindiv">
                 <div className="online-div">
                     <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
-                    <IconButton icon={<HamburgerIcon />} colorScheme="blackAlpha"  aria-label="menu" onClick={onOpen} marginRight={1} />
-                      
+                        <IconButton icon={<HamburgerIcon />} colorScheme="blackAlpha" aria-label="menu" onClick={onOpen} marginRight={1} />
+
                         <Input variant="outline" placeholder="Search user" onChange={handlechange} />
-                        
+
                     </div>
 
                     <span className="divider">
@@ -50,22 +62,14 @@ export const ChatScreen = () => {
                     </span>
                     <div className="userdata">
                         {Names.map((data) => {
-                            return <div className="singlecard" onClick={handleClick} id={data.email} >
-                                <div style={{width:"25%",padding:0}}>
+                            return <div className="singlecard" onClick={() => handleClick(data)} key={data.email} >
+                                <div style={{ width: "25%", padding: 0 }}>
                                     <img src={Avatar}
-                                         alt={"avatar"}
-                                         className="avatar"
+                                        alt={"avatar"}
+                                        className="avatar"
                                     />
                                 </div>
-
-
-                                <div className="card-details">
-                                    <h6 className="username">{data.username}</h6>
-
-                                    <p>Online</p>
-                                </div>
-                                <span className="status"></span>
-
+                                <h6 className="username">{data.username === loggedUser ? "saved message" : data.username}</h6>
                             </div>
                         })}
                     </div>
@@ -73,7 +77,7 @@ export const ChatScreen = () => {
 
                 </div>
                 <div className="chatdiv">
-                    <ChatBox/>
+                    <ChatBox receiverID={currentUserId} username={currentuser} />
                 </div>
 
             </div>
