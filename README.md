@@ -12,3 +12,4 @@ Features-implemented or yet to be implemented
 - [ ] Minimal features for mobile.
 - [x] UI/UX 
 - [ ] Responsiveness
+- [ ] Hosting
