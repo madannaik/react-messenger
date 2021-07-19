@@ -7,6 +7,7 @@ const initialState = {
     id: '',
     username: '',
     email: '',
+    image:''
   },
   isLoggedIn: false
 }
@@ -23,6 +24,7 @@ const slice = createSlice({
           id: action.payload.id,
           username: action.payload.username,
           email: action.payload.email,
+          image:action.payload.image
         },
         isLoggedIn: true,
       }
@@ -41,13 +43,3 @@ const slice = createSlice({
 export const { userLogged ,userLoggedOut} = slice.actions;
 export const reducers = slice.reducer;
 
-// createStore(initialState,{
-
-//  [LoggedUser.type] :(state,action)=>{
-//     state.push({
-//       id:action.payload.id,
-//       profile: action.payload.user,
-//       isLoggedIn: true, 
-//     })
-//   }
-// })

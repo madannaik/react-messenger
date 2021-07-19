@@ -1,7 +1,7 @@
 import SignUpModel from '../models/dataschema.js';
 
 
-export const getPosts = async (req, res) => {
+export const LoginRoute = async (req, res) => {
     const { email, password } = req.body;
     // console.log(req.body ,"1");
     try {
@@ -16,7 +16,7 @@ export const getPosts = async (req, res) => {
                     // console.log(docs['password']);
                     const isMatch = password === docs['password'];
                     if (!isMatch) {
-                        res.status(400).json({ message: "Can't even remembe a password" });
+                        res.status(400).json({ message: "Incorrect password" });
                       } else {
                         res.json({ message: "user signed successfully!" ,status:"200",username:docs['username'],email:docs['email'],id:docs['_id']});
                       }

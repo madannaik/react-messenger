@@ -1,12 +1,13 @@
 import "./login.css";
-import { React, useState,useContext } from "react"
-import { Input} from "@chakra-ui/react";
-import { Divider, Button ,useToast} from "@chakra-ui/react";
+import { React, useState, useContext } from "react"
+import { Input } from "@chakra-ui/react";
+import { Divider, Button, useToast } from "@chakra-ui/react";
 import chat from "../../svg/user.svg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import {ReactReduxContext} from 'react-redux';
-import {userLogged} from '../../store/login'
+import { ReactReduxContext } from 'react-redux';
+import { userLogged } from '../../store/login'
+import Style from "./style";
 
 
 export const Login = () => {
@@ -18,88 +19,75 @@ export const Login = () => {
     const handleChangeEmail = (event) => setemail(event.target.value);
     const handleChangePassword = (event) => setpassword(event.target.value);
     const context = useContext(ReactReduxContext);
-    console.log(context.store.getState());
+    // console.log(context.store.getState());
 
-    const handleSubmit = ()=>{
+    const handleSubmit = () => {
         setisloading(true);
-        if(!email ||  !password){
+        if (!email || !password) {
             setisloading(false);
             toast({
                 title: "Fill all fields.",
-                description: "Dumbass.",
                 status: "warning",
                 duration: 9000,
                 isClosable: true,
-              });
+            });
         }
-        else{
+        else {
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email:email,password:password})
+                body: JSON.stringify({ email: email, password: password })
             };
             fetch('http://localhost:5000/login', requestOptions)
-            .then(response => response.json())
-            .then(data =>{
-                   setisloading(false)
+                .then(response => response.json())
+                .then(data => {
+                    setisloading(false)
                     toast({
-                    title: `${data.message}`,
-                    description: "Dumbass.",
-                    status: "success",
-                    duration: 9000,
-                    isClosable: true,
-                  });
-                  if(data.status ==="200"){
-                    context.store.dispatch(userLogged({
-                        id:data.id,
-                        username:data.username,
-                        email:data.email
-                    }));
-                    history.push('/chat')
-                      console.log("you can go further");
-                  }
-               
-            });
-            
+                        title: `${data.message}`,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                    if (data.status === "200") {
+                        context.store.dispatch(userLogged({
+                            id: data.id,
+                            username: data.username,
+                            email: data.email,
+                            image:data.image
+                        }));
+                        history.push('/chat')
+                        console.log("you can go further");
+                    }
+
+                });
+
         }
     }
     return <div className="maindiv">
+        <Style/>
         <div className="logindiv">
             <div className="loginbox">
                 <div className="letters login-letters">Log In</div>
-                <Input placeholder="Email" _placeholder={{ color: '#161a1d' }} borderColor={"#003049"} textColor={"white"} marginBottom={"8"}  marginTop={"4"} type={"email"} onChange={handleChangeEmail} />
-                <Input placeholder="Password" _placeholder={{ color: '#161a1d' }} borderColor={"#003049"} textColor={"white"} marginBottom={"8"} type={"password"} onChange={handleChangePassword}/>
+                <p className="letters-signin" >Dont have an account?  <Link to="/signup" style={{color:"blue"}}>Sign Up</Link></p>
+                <Input placeholder="Email" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} marginTop={"4"} type={"email"} onChange={handleChangeEmail} />
+                <Input placeholder="Password" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} type={"password"} onChange={handleChangePassword} />
                 <Button
                     isLoading={isloading}
                     loadingText="Submitting"
                     colorScheme="facebook"
                     variant="outline"
+                    w={"50%"}
+                    _hover={{
+                        opacity: "0.7"
+                    }
+                    }
+                    margin={"0 auto"}
                     onClick={handleSubmit}
-                    bgColor={"#03045e"}
+                    bgColor={"#5390d9"}
                     color={"whitesmoke"}
                 >
                     Submit
-                </Button>
-                <div className="mobile">
-                    <p className="">Dont have an account?</p>
-                    <Link to="/signup">
-                        <p className="">Sing Up</p>
-                    </Link>
-                </div>
-            </div>
-            <div className="line">
-
-                <Divider orientation="vertical" color={"white"} />
-
-            </div>
-            <div className="logo">
-                <img src={chat} className="signinlogo stylesvg"  alt={"logo"} />
-                <p className="letters margin-right">Dont have an account?</p>
-                <Link to="/signup">
-                    <p className="letters margin-right">Sing Up</p>
-                </Link>
-                
-                
+                </Button>         
             </div>
         </div>
     </div>

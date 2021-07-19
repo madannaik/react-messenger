@@ -1,0 +1,59 @@
+.divider {
+  margin: 1rem 1rem;
+}
+.requests-data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    // height: 60vh;
+    overflow-y: hidden;
+    background-color: transparent;
+  .singlecard {
+    width: 100%;
+    min-height: 50px;
+    /* background-color: #caf0f8; */
+    overflow-y: hidden;
+    background-color: #c39ee9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 3px 0;
+    text-overflow: ellipsis;
+    &:hover{
+        // background-color: aquamarine;
+    }
+    .avatar-cnt {
+        width: 17.5%;
+        height: 85%;
+        margin-top: 1.25%;
+        margin-left: 2%;
+        margin-bottom: 1.25%;
+        border-radius: 50%;
+        background-color: white;
+        object-fit: cover;
+        /* padding: 3px; */
+      }
+      .avatar-cnt .avatar {
+        border-radius: 50%;
+        padding: 4px;
+        margin: 0;
+      }
+      .username{
+        font-size: 0.9rem;
+        margin: 1rem 0 0 0.5rem;
+        font-family: 'Poppins', sans-serif;
+        text-overflow: ellipsis;
+        width: 70%;
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+    .add-people{
+        margin-top: 5.5%;
+        margin-right:5.5% ;
+    }
+  }
+
+  
+}

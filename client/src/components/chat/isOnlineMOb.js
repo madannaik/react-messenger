@@ -1,16 +1,23 @@
-import { useDisclosure } from "@chakra-ui/hooks";
-import { Divider, Input} from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { DrawerMenu } from "./Drawer";
-import { React, useContext, useEffect, useState } from 'react';
-import Avatar from "../../svg/boy.svg"
-import "./css/chatscreen.css"
-import { IconButton } from "@chakra-ui/react"
-import { ChatBox } from "./chatbox";
+import React,{useState,useContext,useEffect} from "react"
+import {
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    useDisclosure,
+    Button,
+    Input,
+    IconButton,
+    Divider
+  } from "@chakra-ui/react"
+import { HamburgerIcon } from "@chakra-ui/icons"
 import { ReactReduxContext } from "react-redux";
 import { GetFriends } from "../../services/API/user-service";
-
-export const ChatScreen = () => {
+import  Avatar  from "../../svg/boy.svg";
+export default function DrawerExample() {
     const context = useContext(ReactReduxContext);
     const loggedUser = context.store.getState().profile.email;
     useEffect(() => {
@@ -18,8 +25,6 @@ export const ChatScreen = () => {
             setNames(data.data));
     }, []);
 
-
-    const { isOpen, onOpen, onClose } = useDisclosure();
     const [Names, setNames] = useState([]);
     const [input, setinput] = useState("");
 
@@ -44,12 +49,28 @@ export const ChatScreen = () => {
         
         
     };
-    return <>
-        <div>
-            <DrawerMenu isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = React.useRef()
 
-            <div className="chatmaindiv">
-                <div className="online-div">
+
+    return (
+      <>
+        <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+          Open
+        </Button>
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          finalFocusRef={btnRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Create your account</DrawerHeader>
+  
+            <DrawerBody>
+            <div className="online-div">
                     <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
                         <IconButton icon={<HamburgerIcon />} colorScheme="blackAlpha" aria-label="menu" onClick={onOpen} marginRight={1} />
 
@@ -79,11 +100,11 @@ export const ChatScreen = () => {
 
 
                 </div>
-                <div className="chatdiv">
-                    <ChatBox receiverID={currentUserData.currentUserId} username={currentUserData.currentuser} avatar={currentUserData.currentUserAvatar} />
-                </div>
-
-            </div>
-        </div>
-    </>
-}
+            </DrawerBody>
+  
+    
+          </DrawerContent>
+        </Drawer>
+      </>
+    )
+  }

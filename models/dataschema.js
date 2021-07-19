@@ -7,6 +7,8 @@ let loginInfo = new schema({
     email: String,
     password: String,
     isOnline: Boolean,
+    image:String,
+    friends:Array,
 }, {collection: "UserData"});
 
 let SignUpModel = mongoose.model('loginModel', loginInfo);

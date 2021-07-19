@@ -23,7 +23,7 @@ export default function Chatbubble({data}) {
     }
     const textdiv = {
       "padding":"10px 14px",
-      "maxWidth":"25vw",
+      "maxWidth":"40vw",
       "backgroundColor":"#312244",
       "borderRadius": `${from === data.from ? "20px 20px 3px 20px":"20px 20px 20px 3px"}`,
     }
