@@ -2,10 +2,10 @@
 import express from 'express';
 import SignUpModel from '../models/dataschema.js';
 import mail from "@sendgrid/mail";
-
+import dotenv from "dotenv"
 const app = express.Router();
-const APIKey = "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";
-mail.setApiKey(APIKey);
+dotenv.config({path:'./config.env'});
+mail.setApiKey(process.env.SENDGRID_API);
 
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send({ status: 'ok' }));
