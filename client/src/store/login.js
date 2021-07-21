@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
+const key = JSON.parse(localStorage.getItem("item"));
 
 const initialState = {
   profile: {
-    id: '',
-    username: '',
-    email: '',
-    image:''
+    id: key.id,
+    username: key.username,
+    email: key.email,
+    image: key.image,
   },
-  isLoggedIn: false
+  isLoggedIn: key===null?false:true
 }
 
 const slice = createSlice({
@@ -17,6 +18,7 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     "userLogged": (state, action) => {
+      localStorage.setItem("item", JSON.stringify(action.payload));
 
       return {
         ...state,
@@ -24,22 +26,22 @@ const slice = createSlice({
           id: action.payload.id,
           username: action.payload.username,
           email: action.payload.email,
-          image:action.payload.image
+          image: action.payload.image
         },
         isLoggedIn: true,
       }
     },
-    "userLoggedOut":(state,action)=>{
+    "userLoggedOut": (state, action) => {
       return {
         ...state,
-        profile:{},
-        isLoggedIn:false
+        profile: {},
+        isLoggedIn: false
       }
     }
   }
 })
 
 
-export const { userLogged ,userLoggedOut} = slice.actions;
+export const { userLogged, userLoggedOut } = slice.actions;
 export const reducers = slice.reducer;
 

@@ -31,7 +31,7 @@ const Editprofile = () => {
 
   const updatePassword = () => {
 
-    UpdatePassword(context.store.getState().profile.id, pass.password, pass.confirmpassword, "changepassword").then(response => {
+    UpdatePassword(context.store.getState().logindetails.profile.id, pass.password, pass.confirmpassword, "changepassword").then(response => {
       toast({
         title: response.status,
         status: "success",
@@ -44,12 +44,12 @@ const Editprofile = () => {
   }
 
   const onClickAvatar = (id) => {
-    ChangeAvatar(context.store.getState().profile.id, avatar[id].avatarUrl, "changeavatar").then(resdata => {
+    ChangeAvatar(context.store.getState().logindetails.profile.id, avatar[id].avatarUrl, "changeavatar").then(resdata => {
       setdata({ ...data, username: resdata?.username, image: resdata?.image, email: resdata?.email })
     })
   }
   useEffect(() => {
-    getUserData(context.store.getState().profile.id).then(resdata => {
+    getUserData(context.store.getState().logindetails.profile.id).then(resdata => {
       setdata({ ...data, username: resdata?.username, image: resdata?.image, email: resdata?.email })
     });
 

@@ -1,5 +1,4 @@
 import SignUpModel from "../models/dataschema.js";
-import { UserModel } from "../models/UsersModel.js";
 export const GetUsersRoute = async (req, res) => {
 
   let IDs = [];
@@ -7,8 +6,6 @@ export const GetUsersRoute = async (req, res) => {
     { _id: req.params.id },
     (err, docs) => {
       IDs = docs['friends'];
-      // res.send(docs);
-      // IDs = docs['friends'];
     }
   )
   let result;

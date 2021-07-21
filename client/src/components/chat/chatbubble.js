@@ -6,7 +6,7 @@ import {format} from "timeago.js";
 
 export default function Chatbubble({data}) {
     const context = useContext(ReactReduxContext);
-    const from = context.store.getState().profile.username;
+    const from = context.store.getState().logindetails.profile.username;
 
     const bubblediv = {
         

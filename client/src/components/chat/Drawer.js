@@ -13,9 +13,9 @@ import {
   Input,
   Divider,
 } from "@chakra-ui/react";
-import { ChatIcon, PlusSquareIcon } from '@chakra-ui/icons'
+import { ChatIcon} from '@chakra-ui/icons'
 import { useHistory, Link } from "react-router-dom";
-import { useRef, useContext, useState, useEffect } from "react";
+import { useRef, useContext, useState } from "react";
 import { ReactReduxContext } from 'react-redux';
 import { userLoggedOut } from "../../store/login";
 import Avatar from "../../svg/boy.svg"
@@ -30,13 +30,14 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
   const onChange = (e)=>setinput(e.target.value);
   const logOut = () => {
     context.store.dispatch(userLoggedOut());
+    localStorage.clear()
     history.push("/")
   }
-  const id = context.store.getState().profile.id;
+  const id = context.store.getState().logindetails.profile.id;
   const onEnter = (e)=>{
     if(e.charCode===13){
       console.log("event caputered");
-        GetAllUsers(context.store.getState().profile.id,input).then(data=>{
+        GetAllUsers(context.store.getState().logindetails.profile.id,input).then(data=>{
           setusers(data);
         });
     }
@@ -61,7 +62,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">
-            {context.store.getState().profile.username}
+            {context.store.getState().logindetails.profile.username}
           </DrawerHeader>
 
           <DrawerBody>

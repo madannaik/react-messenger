@@ -8,7 +8,6 @@
 .chatuserdata {
   display: inline;
   margin: 0;
-  /* position: relative; */
 }
 
 .chatusericon {
@@ -19,6 +18,10 @@
   margin-left: 1rem;
   display: flex;
   justify-content: start;
+}
+.settings-menu{
+  position: absolute;
+  right: 2%;
 }
 
 .chatavatar {
@@ -97,11 +100,11 @@
 /* .chatexchange aside.hide-emoji {
     display: none;
 } */
-@media (min-width:375px) {
+@media (min-width: 375px) {
   .chatarea {
-    margin: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
   }
   .chatexchange .send-button {
     width: 15vw;
@@ -112,9 +115,41 @@
   .chatexchange {
     width: 93vw;
   }
+  .view-icon{
+    visibility: visible;
+  }
 }
-@media (min-width:800px) {
-  .online-div{
-      display: block;
+@media (min-width: 800px) {
+  .online-div {
+    display: block;
+  }
+  .view-icon{
+    visibility: hidden;
+  }
+  .chatexchange .send-button {
+    width: 10vw;
+  }
+  .chatexchange .catchusertext {
+    width: 74vw;
+  }
+  .chatexchange {
+    width: 78vw;
+  }
+}
+
+@media (min-width: 1000px) {
+  .chatarea {
+    width: 97%;
+    height: 95%;
+    margin: 1rem 1rem;
+  }
+  .chatexchange .send-button {
+    width: 10vw;
+  }
+  .chatexchange .catchusertext {
+    width: 74vw;
+  }
+  .chatexchange {
+    width: 78vw;
   }
 }

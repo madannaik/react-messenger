@@ -1,5 +1,5 @@
 import "./login.css";
-import { React, useState, useContext } from "react"
+import { React, useState, useContext ,useEffect} from "react"
 import { Input } from "@chakra-ui/react";
 import { Divider, Button, useToast } from "@chakra-ui/react";
 import chat from "../../svg/user.svg";
@@ -20,6 +20,14 @@ export const Login = () => {
     const handleChangePassword = (event) => setpassword(event.target.value);
     const context = useContext(ReactReduxContext);
     // console.log(context.store.getState());
+
+    useEffect(() => {
+        const key = context.store.getState().logindetails.isLoggedIn;
+        if(key){
+            history.push("/chat");
+        }
+    
+    }, [])
 
     const handleSubmit = () => {
         setisloading(true);

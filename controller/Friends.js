@@ -7,7 +7,6 @@ export const addFriends = async (req,res)=>{
         {_id:req.body._id},
         {$addToSet:{friends:req.body.addFriendId}},
         (err,docs)=>{
-            // console.log(docs);
             if(err) res.send({status:"error handling data"})
             else res.send({status:"added successfully"})
         })
@@ -17,9 +16,12 @@ export const getFriends = async (req,res)=>{
     await SignUpModel.findOne(
         {_id:req.params.id},
         (err,docs)=>{
-            IDs = docs['friends'];
-            // res.send(docs);
-            // IDs = docs['friends'];
+            try {
+                IDs = docs['friends'];
+            } catch (error) {
+                IDs = docs;
+            }
+            
         }
     )
     SignUpModel.find({_id:{$in:IDs}},{password:0},(err,docs)=>{
