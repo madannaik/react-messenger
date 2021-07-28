@@ -6,7 +6,7 @@ import dotenv from "dotenv"
 const app = express.Router();
 dotenv.config({path:'./config.env'});
 mail.setApiKey(process.env.SENDGRID_API);
-
+let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})')
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send({ status: 'ok' }));
 app.post("/", async function (req, res) {
@@ -30,8 +30,6 @@ app.post("/", async function (req, res) {
             }
             else {
               const user = new SignUpModel({ username, email, password });
-
-              // res.status(201).json({ message: "user registered successfully!!" ,status:"200"});
               const message = {
                 to: email.toString(), // Change to your recipient
                 from: 'naikmadan9999@gmail.com', // Change to your verified sender
@@ -64,7 +62,7 @@ app.post("/", async function (req, res) {
 
     });
   } catch (err) {
-    console.log(err);
+    res.send({message:"server is down",status: "401" })
   }
 
 });

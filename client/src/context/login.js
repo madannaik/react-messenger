@@ -5,10 +5,10 @@ const key = JSON.parse(localStorage.getItem("item"));
 
 const initialState = {
   profile: {
-    id: key.id,
-    username: key.username,
-    email: key.email,
-    image: key.image,
+    id: key?.id,
+    username: key?.username,
+    email: key?.email,
+    image: key?.image,
   },
   isLoggedIn: key===null?false:true
 }
@@ -19,7 +19,6 @@ const slice = createSlice({
   reducers: {
     "userLogged": (state, action) => {
       localStorage.setItem("item", JSON.stringify(action.payload));
-
       return {
         ...state,
         profile: {

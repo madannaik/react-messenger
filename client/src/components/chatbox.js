@@ -1,17 +1,17 @@
-import Avatar from "../../svg/boy.svg";
-import "./css/chatbox.css";
+import Avatar from "../assets/boy.svg";
+import "../styles/chatbox.css";
 import { Image, Box, Input, Button, IconButton, HStack, useDisclosure } from "@chakra-ui/react";
 import { ArrowRightIcon, SettingsIcon, StarIcon, ViewIcon } from "@chakra-ui/icons";
-import Chatbubble from './chatbubble';
+import Chatbubble from '../components/chatbubble';
 import { useEffect, useRef, useState } from 'react';
 import { ReactReduxContext } from "react-redux";
 import { useContext } from "react";
-import { socketData } from "../constants/socket"
+import { socketData } from "../utils/socket"
 import Picker from 'emoji-picker-react';
-import team from '../../svg/team.svg';
-import DrawerExample from "./isOnlineMOb";
+import team from '../assets/team.svg';
+import DrawerExample from "../components/isOnlineMOb";
 import React from "react";
-import { DrawerMenu } from "./Drawer";
+import { DrawerMenu } from "../components/Drawer";
 export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
 
     const context = useContext(ReactReduxContext);
@@ -103,7 +103,6 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
         socketData.on("connect", () => {
         });
         socketData.on("recieve_message", (data) => {
-            // console.log(data);
             setMessages(messages => [...messages, data]);
             ref.current.addEventListener('DOMNodeInserted', event => {
                 const { currentTarget: target } = event;

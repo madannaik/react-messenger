@@ -1,11 +1,12 @@
-import "./login.css";
+import "../styles/signup.css";
 import { React, useState } from "react"
-import { Input } from "@chakra-ui/react";
-import { Divider, Button } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
-import chat from "../../svg/log-in.svg";
 import { useToast } from "@chakra-ui/react"
-import Style from "./style";
+// import Style from "./style";
+import { SingUpUser } from "../services/API/auth";
+import { bgSvg } from "../utils/misc";
+
 export const SignUp = () => {
     const toast = useToast();
     const [isloading, setisloading] = useState(false);
@@ -27,15 +28,9 @@ export const SignUp = () => {
             });
         }
         else {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: username, email: email, password: password })
-            };
-            fetch('http://localhost:5000/', requestOptions)
-                .then(response => response.json())
+            SingUpUser({ username: username, email: email, password: password })
                 .then(data => {
-                    // console.log(data);
+                    console.log(data);
                     setisloading(false)
                     toast({
                         title: `${data.message}`,
@@ -44,32 +39,40 @@ export const SignUp = () => {
                         isClosable: true,
                     });
                     if (data.status === "200") {
-                        // console.log("you can go further");
+
                     }
 
                 });
 
         }
     }
-    return <div className="maindiv">
-        <Style />
-        <div className="logindiv">
-            <div className="loginbox">
+    return <div className="maindiv-signin" style={{backgroundImage:`${bgSvg}`}}>
+        <div className="intro">
+            <h1 className="heading-primary">Connect People around the world announusmsly</h1>
+            <div className="intro-image"></div>
+            <span href="null" className="intro-connect">Connect now &#8594; </span>
+        </div>
+        <div className="signdiv">
+        {/* <h1 className="heading-primary-mob">Connect People around the world announusmsly</h1> */}
+            <div className="signbox" >
+                
                 <div className="letters signin-letters" >SIGN UP</div>
-                <p className="letters-login" >ALready have an?  <Link to="/" style={{ color: "blue" }}>Log In</Link></p>
-                <Input placeholder="User Name" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} onChange={handleChangeUsername} />
-                <Input placeholder="Email" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"email"} onChange={handleChangeEmail} />
-                <Input placeholder="Password" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"password"} onChange={handleChangePassword} />
+                <p className="letters-login" >Already have an?  <Link to="/" style={{ color: "blue" }}>Log In</Link></p>
+                <Input borderRadius={"xl"} placeholder="User Name" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} onChange={handleChangeUsername} />
+                <Input borderRadius={"xl"} placeholder="Email" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"email"} onChange={handleChangeEmail} />
+                <Input borderRadius={"xl"} placeholder="Password" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"password"} onChange={handleChangePassword} />
                 <Button
                     isLoading={isloading}
                     loadingText="Submitting"
                     colorScheme="facebook"
                     variant="outline"
+                    border="none"
                     onClick={handleSubmit}
-                    bgColor={"#5390d9"}
+                    boxShadow="dark-lg"
+                    bgColor={"#6254e4"}
                     _hover={
                         {
-                            opacity:"0.8"
+                            opacity: "0.8"
                         }
                     }
                     color={"whitesmoke"}
@@ -78,11 +81,11 @@ export const SignUp = () => {
                 >
                     Submit
                 </Button >
-              
+
 
             </div>
-        
+
         </div>
 
-    </div>
+    </div >
 }

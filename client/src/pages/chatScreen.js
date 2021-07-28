@@ -1,16 +1,17 @@
 import {  Divider, Input } from "@chakra-ui/react";
 import { React, useContext, useEffect, useState } from 'react';
-import Avatar from "../../svg/boy.svg"
-import { ChatBox } from "./chatbox";
+import Avatar from "../assets/boy.svg"
+import { ChatBox } from "../components/chatbox";
 import { ReactReduxContext } from "react-redux";
-import { GetFriends } from "../../services/API/user-service";
+import { GetFriends } from "../services/API/user-service";
 import { useHistory } from "react-router";
-import "./css/chatscreen.css"
+import "../styles/chatscreen.css"
 
 export const ChatScreen = () => {
     const context = useContext(ReactReduxContext);
     const loggedUser = context.store.getState().logindetails.profile.email;
     const history = useHistory()
+    let elem = [];
     useEffect(() => {
         const key = context.store.getState().logindetails.isLoggedIn;
         if (!key) {
@@ -18,9 +19,14 @@ export const ChatScreen = () => {
         }
         else {
             GetFriends(context.store.getState().logindetails.profile.id).then(data =>
-                setNames(data.data));
+                setNames(data.data.sort((x,y)=>{
+                    return x.email === loggedUser ? -1: y === loggedUser ? 1 : 0; 
+                })));
+    
+               
         }
-    }, []);
+        
+    }, []); 
 
     const [Names, setNames] = useState([]);
     const [input, setinput] = useState("");
@@ -60,7 +66,9 @@ export const ChatScreen = () => {
                         <Divider orientation="horizontal" />
                     </span>
                     <div className="userdata">
-                        {Names.map((data) => {
+                        {
+                    
+                        Names.map((data) => {
 
                             return <div className="singlecard" onClick={() => handleClick(data)} key={data.email} >
                                 <div className="avatar-cnt">

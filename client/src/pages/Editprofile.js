@@ -1,8 +1,8 @@
 import { Grid, GridItem, Input, Text, useToast } from '@chakra-ui/react';
 import React, { useState, useEffect, useRef } from 'react';
-import { getUserData, ChangeAvatar, UpdatePassword } from '../../services/API/user-service';
-import { avatar } from '../constants/misc';
-import "./css/editprofile.scss";
+import { getUserData, ChangeAvatar, UpdatePassword } from '../services/API/user-service';
+import { avatar } from '../utils/misc';
+import "../styles/editprofile.scss";
 import { useContext } from 'react';
 import { ReactReduxContext } from 'react-redux'
 import { Link } from 'react-router-dom';
@@ -34,9 +34,9 @@ const Editprofile = () => {
     UpdatePassword(context.store.getState().logindetails.profile.id, pass.password, pass.confirmpassword, "changepassword").then(response => {
       toast({
         title: response.status,
-        status: "success",
         duration: 4000,
-
+        isClosable:"true",
+        position:"top",
       })
     })
 
@@ -86,11 +86,11 @@ const Editprofile = () => {
                   Change Password
                 </GridItem>
                 <GridItem colSpan="6">
-                  <Input placeholder="Password" name="password" type="password" onChange={(e) => onChangePass("password", e)} />
+                  <Input placeholder="old Password" name="password" type="password" onChange={(e) => onChangePass("password", e)} />
 
                 </GridItem>
                 <GridItem colSpan="6" >
-                  <Input placeholder="Confirm password" name="confirmpassword" type="password" onChange={(e) => onChangePass("confirmpassword", e)} />
+                  <Input placeholder="new password" name="confirmpassword" type="password" onChange={(e) => onChangePass("confirmpassword", e)} />
 
                 </GridItem>
               </Grid>

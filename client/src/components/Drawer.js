@@ -12,16 +12,19 @@ import {
   FormLabel,
   Input,
   Divider,
+  useToast,
 } from "@chakra-ui/react";
 import { ChatIcon} from '@chakra-ui/icons'
 import { useHistory, Link } from "react-router-dom";
 import { useRef, useContext, useState } from "react";
 import { ReactReduxContext } from 'react-redux';
-import { userLoggedOut } from "../../store/login";
-import Avatar from "../../svg/boy.svg"
-import "./css/Drawers.scss"
-import { AddFriends, GetAllUsers } from "../../services/API/user-service";
+import { userLoggedOut } from "../context/login";
+
+import Avatar from "../assets/boy.svg"
+import "../styles/Drawers.scss"
+import { AddFriends, GetAllUsers } from "../services/API/user-service";
 export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
+  const toast = useToast();
   const firstField = useRef()
   const [users, setusers] = useState([])
   const context = useContext(ReactReduxContext);
@@ -39,6 +42,15 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
       console.log("event caputered");
         GetAllUsers(context.store.getState().logindetails.profile.id,input).then(data=>{
           setusers(data);
+          if(data.length === 0){
+            toast({
+              title: "No users found",
+              status: "success",
+              duration: 9000,
+              isClosable: true,
+            
+          });
+          }
         });
     }
   }
@@ -72,7 +84,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
                 <Input
                   ref={firstField}
                   id="username"
-                  placeholder="Please enter user name"
+                  placeholder="Enter username and/or enter"
                   onChange={onChange}
                   onKeyPress={onEnter}
                 />

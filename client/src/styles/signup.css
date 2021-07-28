@@ -1,0 +1,155 @@
+.maindiv-signin {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: #7f53ac;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='2340' height='1080' preserveAspectRatio='none' viewBox='0 0 2340 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1031%26quot%3b)' fill='none'%3e%3crect width='2340' height='1080' x='0' y='0' fill='url(%23SvgjsLinearGradient1032)'%3e%3c/rect%3e%3cpath d='M-270.47 626.5C19.93 625.24 417.29 381.54 866.56 388.9 1315.83 396.26 1208.63 1096.62 1435.08 1193.48' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-244.76 266.28C61.3 277.27 275.62 748.56 875.03 763.08 1474.44 777.6 1700.69 1119.96 1994.82 1124.4' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-454.07 700.36C-196.2 698.51 158.19 448.4 547.07 451.96 935.95 455.52 854.9 1033.68 1047.64 1106.25' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-231.31 901.67C25.86 887.76 216.21 424.55 682.73 426.47 1149.25 428.39 1290.99 1214.21 1596.77 1276.35' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-189.39 886.2C53.76 877.87 363.49 496.62 702.73 497.4 1041.97 498.18 973.23 1039.35 1148.79 1111.17' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1031'%3e%3crect width='2340' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='13.46%25' y1='-29.17%25' x2='86.54%25' y2='129.17%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1032'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+  /* background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%); */
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  background-size: cover;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.maindiv-signin .intro {
+  width: 50%;
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+.maindiv-signin .intro .heading-primary {
+  display: inline-block;
+  background-image: linear-gradient(
+    315deg,
+    #ffffff 0%,
+    #8494db 74%,
+    #2144dd 100%
+  );
+  text-transform: capitalize;
+  font-weight: 500;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+}
+.maindiv-signin .intro .heading-primary::before {
+  width: 100%;
+  height: 100%;
+  content: "|";
+  color: white;
+}
+.maindiv-signin .intro .intro-image {
+  width: 100%;
+  height: 60%;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(../assets/email.svg);
+}
+.maindiv-signin .intro .intro-connect {
+  text-align: center;
+  display: inline-block;
+  background-color: #ffffff;
+  padding: 1rem 1rem;
+  margin-left: 8rem;
+  cursor: pointer;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
+  transition: all 0.3s;
+}
+.maindiv-signin .intro .intro-connect:hover {
+  transform: translateX(30px);
+}
+.maindiv-signin .intro > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.login-letters {
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.margin-right {
+  margin-left: 30px;
+}
+.signdiv {
+  width: 40vw;
+  height: 358px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 6;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.signbox {
+  margin: 0px 20px 20px 20px;
+  width: 100%;
+  padding: 0 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.letters-login {
+  margin: 0 auto;
+  font-weight: 200;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+.signin-letters {
+  font-size: 1.6rem;
+  margin: 0 auto;
+}
+/* 
+#48cae4;
+*/
+.heading-primary-mob {
+  position: absolute;
+  display: inline-block;
+  background-image: linear-gradient(
+    315deg,
+    #ffffff 0%,
+    #8494db 74%,
+    #2144dd 100%
+  );
+  text-transform: capitalize;
+  font-weight: 500;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+}
+@media (min-width: 375px) {
+  .maindiv-signin .intro {
+    display: none;
+  }
+  .signdiv {
+    width: 80vw;
+    border-radius: 5px;
+  }
+  .heading-primary--isMob {
+    display: inline-block;
+  }
+}
+@media (min-width: 768px) {
+  .maindiv-signin .intro {
+    display: block;
+  }
+  .signdiv {
+    width: 40vw;
+  }
+  .heading-primary--isMob {
+    display: hidden;
+  }
+}
+@media (min-width: 1024px) {
+  .signdiv {
+    width: 30vw;
+  }
+}
+@media (min-width: 1204px) {
+  .signdiv {
+    width: 30vw;
+  }
+}

@@ -1,13 +1,11 @@
-import "./login.css";
+import "../styles/login.css";
 import { React, useState, useContext ,useEffect} from "react"
 import { Input } from "@chakra-ui/react";
-import { Divider, Button, useToast } from "@chakra-ui/react";
-import chat from "../../svg/user.svg";
+import { Button, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { ReactReduxContext } from 'react-redux';
-import { userLogged } from '../../store/login'
-import Style from "./style";
+import { userLogged } from '../context/login'
 
 
 export const Login = () => {
@@ -72,7 +70,7 @@ export const Login = () => {
         }
     }
     return <div className="maindiv">
-        <Style/>
+        {/* <Style/> */}
         <div className="logindiv">
             <div className="loginbox">
                 <div className="letters login-letters">Log In</div>

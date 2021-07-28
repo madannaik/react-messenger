@@ -10,9 +10,9 @@ import {
     Divider
 } from "@chakra-ui/react"
 import { ReactReduxContext } from "react-redux";
-import { GetFriends } from "../../services/API/user-service";
-import Avatar from "../../svg/boy.svg";
-import "./css/Drawers.scss"
+import { GetFriends } from "../services/API/user-service";
+import Avatar from "../assets/boy.svg";
+import "../styles/Drawers.scss"
 
 
 

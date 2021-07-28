@@ -1,9 +1,9 @@
 import './App.css';
-import { Login } from './components/SignIn&login/login';
-import { SignUp } from './components/SignIn&login/singUp';
+import { Login } from './pages/login';
+import { SignUp } from './pages/singUp';
 import  {Route, HashRouter as Router} from 'react-router-dom';
-import { ChatScreen } from './components/chat/chatScreen';
-import Editprofile from './components/chat/Editprofile';
+import { ChatScreen } from './pages/chatScreen';
+import Editprofile from './pages/Editprofile';
 import { ReactReduxContext } from "react-redux";
 import { useContext } from "react";
 
