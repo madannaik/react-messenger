@@ -1,16 +1,24 @@
 import { updateConversation } from "../controller/converstionfetchandupdate.js";
-import { isActive } from "../controller/isActive.js";
-
+import {UserModel} from "../models/UsersModel.js"
+// import { isActive } from "../controller/isActive.js";
+// class DatabaseFuctions{
+//     isActive(isactive,email){
+//         if(isactive){
+//             UserModel.findOneAndUpdate({"email":email},{$set:{isOnline:true}},{new:true},(err,docs)=>console.log("yes"));
+//         }
+//         else {
+//             UserModel.findOneAndUpdate({email:email},{$set:{isOnline:false}},{new:true},(err,docs)=>{console.log("no")});
+//         }
+//     }
+// }
 class WebSockets {
     connection(socket) {
         socket.on("joinchat", function (data) {
-
             socket.email = data.email;
             socket.chatID = data.chatId;
-            isActive(true, data.email);
-            
+            // super.isActive(true, data.email);    
+            isActive(true, data.email);          
             socket.join(data.chatId);
-
             socket.in(socket.chatId).socketsJoin(socket.id);
         });
         socket.on("send_message", (data) => {
@@ -24,8 +32,8 @@ class WebSockets {
         })
         socket.on("disconnect", () => {
             let email = socket.disconnect().email;
-            isActive(false,email);
-
+                isActive(false,email);
+                // super.isActive(false, data.email);   
         })
     }
 

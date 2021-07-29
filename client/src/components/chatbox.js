@@ -12,6 +12,7 @@ import team from '../assets/team.svg';
 import DrawerExample from "../components/isOnlineMOb";
 import React from "react";
 import { DrawerMenu } from "../components/Drawer";
+import { GetConverstions } from "../services/API/user-service";
 export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
 
     const context = useContext(ReactReduxContext);
@@ -67,16 +68,10 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
         }
         else {
             setChatId("");
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ member1: senderID, member2: receiverID })
-            }
-            fetch('http://127.0.0.1:5000/put', requestOptions)
-                .then(getResponse => getResponse.json())
+                GetConverstions({ member1: senderID, member2: receiverID })
                 .then(data => {
+                    console.log(data)
                     setMessages(data.message);
-
                     setChatId(data._id);
                     scrollToBottom();
                     socketData.emit("joinchat", {

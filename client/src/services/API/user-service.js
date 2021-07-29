@@ -1,7 +1,6 @@
 import axios from "axios";
-import { getReq, putReq } from "./httpmethods";
-
-const API_URL = "http://localhost:5000/";
+import { API_URL } from "../../utils/misc";
+import { getReq, postReq, putReq } from "./httpmethods";
 
 export const getUserData = async (id) => {
   return axios.get(API_URL + "getuserdata/", {
@@ -37,5 +36,9 @@ export const GetFriends = async (id) => {
   return getReq(API_URL + `updateprofile/getfriends/${id}`);
 }
 export const GetAllUsers = async (id, username) => {
-  return getReq(API_URL + `getUser/${id}/username/${username === '' ? "null" : username}`)
+  return getReq(API_URL + `getUser/${id}/username/${username === '' ? "null" : username}`);
+}
+
+export const GetConverstions = async (body)=>{
+  return postReq(API_URL+"put" ,body);
 }

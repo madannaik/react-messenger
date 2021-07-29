@@ -28,4 +28,4 @@ yarn-error.log*
 .idea/react-messenger.iml
 .idea/vcs.xml
 .vscode/tasks.json
-.env
+/config.env
