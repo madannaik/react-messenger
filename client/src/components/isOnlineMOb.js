@@ -9,7 +9,6 @@ import {
     Input,
     Divider
 } from "@chakra-ui/react"
-import { ReactReduxContext } from "react-redux";
 import { GetFriends } from "../services/API/user-service";
 import Avatar from "../assets/boy.svg";
 import "../styles/Drawers.scss"
@@ -18,11 +17,10 @@ import "../styles/Drawers.scss"
 
 export default function DrawerExample({ isOpen, onOpen, onClose, handleClick }) {
 
-
-    const context = useContext(ReactReduxContext);
-    const loggedUser = context.store.getState().logindetails.profile.email;
+    const key = JSON.parse(localStorage.getItem("item"));
+    const loggedUser = key?.email;
     useEffect(() => {
-        GetFriends(context.store.getState().logindetails.profile.id).then(data =>
+        GetFriends(key?.id).then(data =>
             setNames(data.data));
     }, []);
     const [Names, setNames] = useState([]);

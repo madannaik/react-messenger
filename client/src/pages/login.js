@@ -4,9 +4,7 @@ import { Input } from "@chakra-ui/react";
 import { Button, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { ReactReduxContext } from 'react-redux';
-import { userLogged } from '../context/login'
-
+const key = JSON.parse(localStorage.getItem("item"));
 
 export const Login = () => {
     const toast = useToast();
@@ -16,12 +14,16 @@ export const Login = () => {
     let history = useHistory();
     const handleChangeEmail = (event) => setemail(event.target.value);
     const handleChangePassword = (event) => setpassword(event.target.value);
-    const context = useContext(ReactReduxContext);
+  
     // console.log(context.store.getState());
+    const key = JSON.parse(localStorage.getItem("item"));
 
+    
+    
     useEffect(() => {
-        const key = context.store.getState().logindetails.isLoggedIn;
-        if(key){
+        
+        const keystate = key?.isLoggedIn;
+        if(keystate){
             history.push("/chat");
         }
     
@@ -55,11 +57,18 @@ export const Login = () => {
                         isClosable: true,
                     });
                     if (data.status === "200") {
-                        context.store.dispatch(userLogged({
+                        // context.store.dispatch(userLogged({
+                        //     id: data.id,
+                        //     username: data.username,
+                        //     email: data.email,
+                        //     image:data.image
+                        // }));
+                        localStorage.setItem("item", JSON.stringify({
                             id: data.id,
                             username: data.username,
                             email: data.email,
-                            image:data.image
+                            image:data.image,
+                            isLoggedIn:true
                         }));
                         history.push('/chat')
                         console.log("you can go further");

@@ -14,51 +14,56 @@ import {
   Divider,
   useToast,
 } from "@chakra-ui/react";
-import { ChatIcon} from '@chakra-ui/icons'
+import { ChatIcon } from '@chakra-ui/icons'
 import { useHistory, Link } from "react-router-dom";
-import { useRef, useContext, useState } from "react";
-import { ReactReduxContext } from 'react-redux';
-import { userLoggedOut } from "../context/login";
+import { useRef, useState } from "react";
+
 
 import Avatar from "../assets/boy.svg"
 import "../styles/Drawers.scss"
 import { AddFriends, GetAllUsers } from "../services/API/user-service";
 export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
+  const key = JSON.parse(localStorage.getItem("item"));
   const toast = useToast();
   const firstField = useRef()
   const [users, setusers] = useState([])
-  const context = useContext(ReactReduxContext);
   let history = useHistory();
   const [input, setinput] = useState('');
-  const onChange = (e)=>setinput(e.target.value);
+  const onChange = (e) => setinput(e.target.value);
   const logOut = () => {
-    context.store.dispatch(userLoggedOut());
-    localStorage.clear()
-    history.push("/")
+    localStorage.setItem("item", JSON.stringify({
+      id: null,
+      username: null,
+      email: null,
+      image: null,
+      isLoggedIn: false,
+    }));
+    history.push("/");
   }
-  const id = context.store.getState().logindetails.profile.id;
-  const onEnter = (e)=>{
-    if(e.charCode===13){
+
+  const id = key?.id;
+  const onEnter = (e) => {
+    if (e.charCode === 13) {
       console.log("event caputered");
-        GetAllUsers(context.store.getState().logindetails.profile.id,input).then(data=>{
-          setusers(data);
-          if(data.length === 0){
-            toast({
-              title: "No users found",
-              status: "success",
-              duration: 9000,
-              isClosable: true,
-            
+      GetAllUsers(key?.id, input).then(data => {
+        setusers(data);
+        if (data.length === 0) {
+          toast({
+            title: "No users found",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+
           });
-          }
-        });
+        }
+      });
     }
   }
 
-  const addFriends = (data)=>{
-      AddFriends(id,data._id).then(
-        data=>console.log(data)
-      )
+  const addFriends = (data) => {
+    AddFriends(id, data._id).then(
+      data => console.log(data)
+    )
   }
 
   return (
@@ -74,7 +79,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">
-            {context.store.getState().logindetails.profile.username}
+            {key?.username}
           </DrawerHeader>
 
           <DrawerBody>
@@ -93,9 +98,9 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
                 </span>
                 <div className="requests-data">
                   {users.map(data => {
-                    return <div className="singlecard"  onClick={()=>addFriends(data)}>
+                    return <div className="singlecard" onClick={() => addFriends(data)}>
                       <div className="avatar-cnt">
-                        <img src={data.image??Avatar}
+                        <img src={data.image ?? Avatar}
                           alt={"avatar"}
                           className="avatar"
                         />
@@ -105,7 +110,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
                       <ChatIcon color={"white"} className="add-people" />
                     </div>
                   })}
-                  
+
                 </div>
               </Box>
             </Stack>

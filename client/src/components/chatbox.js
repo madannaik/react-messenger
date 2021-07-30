@@ -4,8 +4,6 @@ import { Image, Box, Input, Button, IconButton, HStack, useDisclosure } from "@c
 import { ArrowRightIcon, SettingsIcon, StarIcon, ViewIcon } from "@chakra-ui/icons";
 import Chatbubble from '../components/chatbubble';
 import { useEffect, useRef, useState } from 'react';
-import { ReactReduxContext } from "react-redux";
-import { useContext } from "react";
 import { socketData } from "../utils/socket"
 import Picker from 'emoji-picker-react';
 import team from '../assets/team.svg';
@@ -14,10 +12,9 @@ import React from "react";
 import { DrawerMenu } from "../components/Drawer";
 import { GetConverstions } from "../services/API/user-service";
 export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
-
-    const context = useContext(ReactReduxContext);
-    const senderID = context.store.getState().logindetails.profile.id;
-    const from = context.store.getState().logindetails.profile.username;
+    const key = JSON.parse(localStorage.getItem("item"));
+    const senderID = key?.id;
+    const from = key?.username;
     const inputref = useRef(null)
     const [inputText, setInputText] = useState('');
     const [messages, setMessages] = useState([]);
@@ -75,7 +72,8 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
                     setChatId(data._id);
                     scrollToBottom();
                     socketData.emit("joinchat", {
-                        email: context.store.getState().logindetails.profile.email,
+                        // email: context.store.getState().logindetails.profile.email,
+                        email: key?.email,
                         chatId: data._id,
                     });
 

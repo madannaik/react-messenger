@@ -1,12 +1,12 @@
-import React, {useContext} from 'react'
-import {ReactReduxContext} from "react-redux";
+import React from 'react'
+
 import {format} from "timeago.js";
 
 
 
 export default function Chatbubble({data}) {
-    const context = useContext(ReactReduxContext);
-    const from = context.store.getState().logindetails.profile.username;
+    const key = JSON.parse(localStorage.getItem("item"));
+    const from = key?.username;
 
     const bubblediv = {
         

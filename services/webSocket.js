@@ -1,5 +1,6 @@
 import { updateConversation } from "../controller/converstionfetchandupdate.js";
 import {UserModel} from "../models/UsersModel.js"
+import {isActive} from "../controller/isActive.js"
 // import { isActive } from "../controller/isActive.js";
 // class DatabaseFuctions{
 //     isActive(isactive,email){
@@ -17,8 +18,10 @@ class WebSockets {
             socket.email = data.email;
             socket.chatID = data.chatId;
             // super.isActive(true, data.email);    
-            isActive(true, data.email);          
+            isActive(true, data.email);     
+            // create a socket roomm    
             socket.join(data.chatId);
+            // join users 
             socket.in(socket.chatId).socketsJoin(socket.id);
         });
         socket.on("send_message", (data) => {

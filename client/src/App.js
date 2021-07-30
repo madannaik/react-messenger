@@ -4,14 +4,9 @@ import { SignUp } from './pages/singUp';
 import  {Route, HashRouter as Router} from 'react-router-dom';
 import { ChatScreen } from './pages/chatScreen';
 import Editprofile from './pages/Editprofile';
-import { ReactReduxContext } from "react-redux";
-import { useContext } from "react";
 
 function App() {
- 
- const context = useContext(ReactReduxContext);
-
-  return (
+ return (
     
     <Router> 
           <Route exact path="/" component={Login}  /> 

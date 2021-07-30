@@ -4,14 +4,14 @@ import { getUserData, ChangeAvatar, UpdatePassword } from '../services/API/user-
 import { avatar } from '../utils/misc';
 import "../styles/editprofile.scss";
 import { useContext } from 'react';
-import { ReactReduxContext } from 'react-redux'
+
 import { Link } from 'react-router-dom';
 
 
 const Editprofile = () => {
+  const key = JSON.parse(localStorage.getItem("item"));
   const ref = useRef(null);
   const toast = useToast();
-  const context = useContext(ReactReduxContext);
   const [data, setdata] = useState({
     username: "",
     image: "",
@@ -31,7 +31,7 @@ const Editprofile = () => {
 
   const updatePassword = () => {
 
-    UpdatePassword(context.store.getState().logindetails.profile.id, pass.password, pass.confirmpassword, "changepassword").then(response => {
+    UpdatePassword(key?.id, pass.password, pass.confirmpassword, "changepassword").then(response => {
       toast({
         title: response.status,
         duration: 4000,
@@ -44,12 +44,12 @@ const Editprofile = () => {
   }
 
   const onClickAvatar = (id) => {
-    ChangeAvatar(context.store.getState().logindetails.profile.id, avatar[id].avatarUrl, "changeavatar").then(resdata => {
+    ChangeAvatar(key?.id, avatar[id].avatarUrl, "changeavatar").then(resdata => {
       setdata({ ...data, username: resdata?.username, image: resdata?.image, email: resdata?.email })
     })
   }
   useEffect(() => {
-    getUserData(context.store.getState().logindetails.profile.id).then(resdata => {
+    getUserData(key?.id).then(resdata => {
       setdata({ ...data, username: resdata?.username, image: resdata?.image, email: resdata?.email })
     });
 
