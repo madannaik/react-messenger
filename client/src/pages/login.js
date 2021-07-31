@@ -4,6 +4,7 @@ import { Input } from "@chakra-ui/react";
 import { Button, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { LoginUser } from "../services/API/auth";
 const key = JSON.parse(localStorage.getItem("item"));
 
 export const Login = () => {
@@ -41,13 +42,7 @@ export const Login = () => {
             });
         }
         else {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, password: password })
-            };
-            fetch('http://localhost:5000/login', requestOptions)
-                .then(response => response.json())
+                LoginUser({ email: email, password: password })
                 .then(data => {
                     setisloading(false)
                     toast({
@@ -57,12 +52,6 @@ export const Login = () => {
                         isClosable: true,
                     });
                     if (data.status === "200") {
-                        // context.store.dispatch(userLogged({
-                        //     id: data.id,
-                        //     username: data.username,
-                        //     email: data.email,
-                        //     image:data.image
-                        // }));
                         localStorage.setItem("item", JSON.stringify({
                             id: data.id,
                             username: data.username,

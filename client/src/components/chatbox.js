@@ -11,7 +11,23 @@ import DrawerExample from "../components/isOnlineMOb";
 import React from "react";
 import { DrawerMenu } from "../components/Drawer";
 import { GetConverstions } from "../services/API/user-service";
-export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
+import { createBreakpoints } from "@chakra-ui/theme-tools"
+// 2. Update the breakpoints as key-value pairs
+import { useBreakpointValue } from "@chakra-ui/react"
+
+export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
+    const breakpoints = createBreakpoints({
+        sm: "320px",
+        md: "768px",
+        lg: "960px",
+        xl: "1200px",
+    })
+    const variant = useBreakpointValue({
+        sm: "",
+        md: "Send",
+        lg: "Send",
+        xl: "Send",
+    })
     const key = JSON.parse(localStorage.getItem("item"));
     const senderID = key?.id;
     const from = key?.username;
@@ -24,7 +40,9 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
     let todaysDate = new Date();
 
     const ref = useRef(null);
-
+    useEffect(() => {
+        console.log(variant)
+    })
     const scrollToBottom = () => {
         ref.current.addEventListener('DOMNodeInserted', event => {
             const { currentTarget: target } = event;
@@ -65,14 +83,13 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
         }
         else {
             setChatId("");
-                GetConverstions({ member1: senderID, member2: receiverID })
+            GetConverstions({ member1: senderID, member2: receiverID })
                 .then(data => {
                     console.log(data)
                     setMessages(data.message);
                     setChatId(data._id);
                     scrollToBottom();
                     socketData.emit("joinchat", {
-                        // email: context.store.getState().logindetails.profile.email,
                         email: key?.email,
                         chatId: data._id,
                     });
@@ -114,15 +131,15 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
         setInputText(event.target.value);
     }
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { 
-        isOpen: isLeftOpen, 
-        onOpen: onLeftOpen, 
-        onClose: onLeftClose 
+    const {
+        isOpen: isLeftOpen,
+        onOpen: onLeftOpen,
+        onClose: onLeftClose
     } = useDisclosure()
-    
-  
+
+
     return <>
-        <DrawerExample isOpen={isLeftOpen} onClose={onLeftClose} onOpen={onLeftOpen} handleClick={handleclick}  />
+        <DrawerExample isOpen={isLeftOpen} onClose={onLeftClose} onOpen={onLeftOpen} handleClick={handleclick} />
         <DrawerMenu isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
         <div className="chatarea">
             <div className="chatuserdata">
@@ -132,9 +149,9 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
                     <Box className="chatusername">{username === '' ? '' : username}</Box>
                     <span></span>
                     <HStack className="settings-menu">
-                       
+
                         <IconButton className="view-icon" icon={<ViewIcon />} onClick={onLeftOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
-                        <IconButton  icon={<SettingsIcon />} onClick={onOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
+                        <IconButton icon={<SettingsIcon />} onClick={onOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
                     </HStack>
                 </div>
                 <div className="chatdisplayspace" ref={ref} >
@@ -155,7 +172,7 @@ export const ChatBox = ({ username, receiverID, avatar ,handleclick}) => {
 
                     <Input variant="filled" placeholder="filled" className="catchusertext" onChange={onChange} ref={inputref} />
                     <Button rightIcon={<ArrowRightIcon />} onClick={sendMessage} colorScheme="blue" variant="outline" paddingX={3} paddingY={0} className="send-button" >
-                        Send
+                        {variant}
                     </Button>
                     <IconButton icon={<StarIcon />} _focus={{
                         border: "none"
