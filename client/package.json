@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.6.1",
@@ -16,6 +19,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "emoji-picker-react": "^3.4.8",
     "express": "^4.17.1",
     "framer-motion": "^4.1.13",
     "mongoose": "^5.12.7",
