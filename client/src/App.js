@@ -8,7 +8,7 @@ import Editprofile from './pages/Editprofile';
 function App() {
  return (
     
-    <Router> 
+    <Router basename={'/client'}> 
           <Route exact path="/" component={Login}  /> 
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/chat" component={ChatScreen}  /> 

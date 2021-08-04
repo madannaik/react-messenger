@@ -19,13 +19,23 @@ export const SignUp = () => {
     const handleSubmit = () => {
         setisloading(true);
         if (!username || !email || !password) {
-            setisloading(false);
-            toast({
-                title: "Fill all fields.",
-                status: "warning",
-                duration: 9000,
-                isClosable: true,
-            });
+            if (password.length !== 8) {
+                toast({
+                    title: "Password should minmum 8 char",
+                    status: "warning",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            }
+            else {
+                setisloading(false);
+                toast({
+                    title: "Fill all fields.",
+                    status: "warning",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            }
         }
         else {
             SingUpUser({ username: username, email: email, password: password })
@@ -46,16 +56,16 @@ export const SignUp = () => {
 
         }
     }
-    return <div className="maindiv-signin" style={{backgroundImage:`${bgSvg}`}}>
+    return <div className="maindiv-signin" style={{ backgroundImage: `${bgSvg}` }}>
         <div className="intro">
             <h1 className="heading-primary">Connect People around the world announusmsly</h1>
             <div className="intro-image"></div>
             <span href="null" className="intro-connect">Connect now &#8594; </span>
         </div>
         <div className="signdiv">
-        {/* <h1 className="heading-primary-mob">Connect People around the world announusmsly</h1> */}
+            {/* <h1 className="heading-primary-mob">Connect People around the world announusmsly</h1> */}
             <div className="signbox" >
-                
+
                 <div className="letters signin-letters" >SIGN UP</div>
                 <p className="letters-login" >Already have an?  <Link to="/" style={{ color: "blue" }}>Log In</Link></p>
                 <Input borderRadius={"xl"} placeholder="User Name" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} onChange={handleChangeUsername} />

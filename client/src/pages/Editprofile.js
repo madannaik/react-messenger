@@ -13,9 +13,9 @@ const Editprofile = () => {
   const ref = useRef(null);
   const toast = useToast();
   const [data, setdata] = useState({
-    username: "",
+    username: key?.username,
     image: "",
-    email: "",
+    email: key?.email,
   })
   const [pass, setpass] = useState({
     password: "",
@@ -75,12 +75,18 @@ const Editprofile = () => {
                 gap={4}
               >
                 <GridItem colSpan="6">
-                  <Input placeholder="FirstName" defaultValue={data.username} />
+                  <Input placeholder="FirstName" disabled _disabled={{
+                    color:"black",
+                    cursor:"not-allowed"
+                  }} defaultValue={data.username} />
 
                 </GridItem>
 
                 <GridItem colSpan="6">
-                  <Input placeholder="LastName" defaultValue={data.email} />
+                  <Input placeholder="LastName" _disabled={{
+                    color:"black",
+                    cursor:"not-allowed"
+                  }} disabled defaultValue={data.email} />
                 </GridItem>
                 <GridItem colSpan="12" alignItems="start" textAlign="start" fon fontSize="md" height="auto">
                   Change Password
