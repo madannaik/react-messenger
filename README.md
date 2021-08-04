@@ -4,12 +4,11 @@
 Features-implemented or yet to be implemented
 
 - [x] Login/SignUP
-- [ ] Integration of passport,JWT. 
-- [ ] Integration of socket.io
+- [ ] Integration of passport,JWT [Open for PR]. 
+- [x] Integration of socket.io
 - [x] Edit profile
-- [ ] Integration of google authentication
+- [ ] Integration of google authentication [Open for PR]
 - [x] Chat with any users 
-- [ ] Minimal features for mobile.
 - [x] UI/UX 
-- [ ] Responsiveness
+- [x] Responsiveness
 - [ ] Hosting
