@@ -1,5 +1,6 @@
-export const API_URL = "http://localhost:5000/"
+// export const API_URL = "http://localhost:5000/"
 
+export const API_URL = "https://message-server.azurewebsites.net/"
 export const avatar = [
     { avatarUrl: "https://ucarecdn.com/6472c0b7-254f-4c6f-b27c-c8c2cbd34f07/1.svg" },
     { avatarUrl: "https://ucarecdn.com/16588e2b-5b64-48f5-ad62-e021004a34cf/4.svg" },

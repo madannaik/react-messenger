@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
-
-export const socketData = io("http://localhost:5000",{reconnection:false});
+import {API_URL} from  "../utils/misc"
+export const socketData = io(API_URL,{reconnection:false});
 const tryReconnect = () => {
     setTimeout(() => {
         socketData.io.open((err) => {
