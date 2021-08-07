@@ -11,14 +11,20 @@ import webSocket from "./services/webSocket.js";
 import dotenv from  "dotenv";
 import { GetUserData ,EditProfile, UpdatePassword} from './controller/EditProfile.js';
 import { addFriends, getFriends } from './controller/Friends.js';
+import rateLimit from "express-rate-limit" ;
 
 dotenv.config({path:'./config.env'});
 const app = express();
 const httpserver = http.createServer(app);
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+  });
+
 app.use(express.json({ extended: true }));
 app.use(cors());
-
+app.use(limiter);
 app.use('/', SingnUpRoute);
 app.use('/login', LoginRoute);
 app.use('/getUser/:id/username/:username', GetUsersRoute);

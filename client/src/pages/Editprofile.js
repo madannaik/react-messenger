@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getUserData, ChangeAvatar, UpdatePassword } from '../services/API/user-service';
 import { avatar } from '../utils/misc';
 import "../styles/editprofile.scss";
-import { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 

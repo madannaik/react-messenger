@@ -19,41 +19,46 @@ export const SignUp = () => {
     const handleSubmit = () => {
         setisloading(true);
         if (!username || !email || !password) {
-            if (password.length !== 8) {
-                toast({
-                    title: "Password should minmum 8 char",
-                    status: "warning",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            }
-            else {
-                setisloading(false);
-                toast({
-                    title: "Fill all fields.",
-                    status: "warning",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            }
+
+
+            setisloading(false);
+            toast({
+                title: "Fill all fields.",
+                status: "warning",
+                duration: 9000,
+                isClosable: true,
+            });
+
         }
         else {
-            SingUpUser({ username: username, email: email, password: password })
-                .then(data => {
-                    console.log(data);
-                    setisloading(false)
-                    toast({
-                        title: `${data.message}`,
-                        status: "success",
-                        duration: 9000,
-                        isClosable: true,
-                    });
-                    if (data.status === "200") {
-
-                    }
-
+            if (password.length !== 8) {
+                console.log(password.length);
+                toast({
+                    title: "Password should min 8 char",
+                    status: "warning",
+                    duration: 9000,
+                    isClosable: true,
                 });
+                setisloading(false);
+            }
+            else {
+                SingUpUser({ username: username, email: email, password: password })
+                    .then(data => {
+                        console.log(data);
+                        setisloading(false)
+                        toast({
+                            title: `${data.message}`,
+                            status: "success",
+                            duration: 9000,
+                            isClosable: true,
+                        });
+                        if (data.status === "200") {
 
+                        }
+
+                    });
+
+            }
         }
     }
     return <div className="maindiv-signin" style={{ backgroundImage: `${bgSvg}` }}>

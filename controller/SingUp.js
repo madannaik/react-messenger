@@ -20,7 +20,7 @@ app.post("/", async function (req, res) {
       else {
         console.log("Result : ", docs);
         if (docs) {
-          return res.status(422).json({ message: "useralready exists", status: "422" });
+          return res.send({ message: "useralready exists", status: "422" });
         } else {
 
           let name = await SignUpModel.findOne({ username: username }, async function (err, docs) {
@@ -44,7 +44,7 @@ app.post("/", async function (req, res) {
                 console.log("mail sent")
                 const userRegister = await user.save();
                 await SignUpModel.findByIdAndUpdate({ _id: userRegister["_id"] }, { $addToSet: { friends: userRegister["_id"] } });
-                res.status(201).json({ message: "user registered successfully!!", status: "200" });
+                res.send({ message: "user registered successfully!!", status: "200" });
               } catch (error) {
                 console.error(error);
                 res.send({ message: "invalid mail id!!", status: "404" });
