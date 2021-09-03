@@ -37,7 +37,7 @@ app.post("/", async function (req, res) {
               try {
                 await mail.send({
                   to: email.toString(), // Change to your recipient
-                  from: 'naikmadan9999@gmail.com', // Change to your verified sender
+                  from: 'njgutmmmjplpamgofe@zqrni.com', // Change to your verified sender
                   templateId: 'd-244f129c512e4ff6b474d0345e2c56a9',
 
                 });
