@@ -14,6 +14,6 @@ export const GetUsersRoute = async (req, res) => {
     result = await SignUpModel.find({ _id: {$not:{ $in: IDs }} }, { password: 0, __v: 0 });
   }
   else result = await SignUpModel.find({ _id: { $not :{$in: IDs }}, username: req.params.username }, { password: 0, __v: 0 });
-  console.log(result)
+  // console.log(result)
   res.send(result);
 }

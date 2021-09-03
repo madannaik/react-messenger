@@ -3,7 +3,6 @@ import { React, useState } from "react"
 import { Button, Input } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { useToast } from "@chakra-ui/react"
-// import Style from "./style";
 import { SingUpUser } from "../services/API/auth";
 import { bgSvg } from "../utils/misc";
 
@@ -32,7 +31,7 @@ export const SignUp = () => {
         }
         else {
             if (password.length !== 8) {
-                console.log(password.length);
+                // console.log(password.length);
                 toast({
                     title: "Password should min 8 char",
                     status: "warning",
@@ -44,7 +43,7 @@ export const SignUp = () => {
             else {
                 SingUpUser({ username: username, email: email, password: password })
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         setisloading(false)
                         toast({
                             title: `${data.message}`,
@@ -63,7 +62,7 @@ export const SignUp = () => {
     }
     return <div className="maindiv-signin" style={{ backgroundImage: `${bgSvg}` }}>
         <div className="intro">
-            <h1 className="heading-primary">Connect People around the world announusmsly</h1>
+            <h1 className="heading-primary">Connect People around the world anonymously</h1>
             <div className="intro-image"></div>
             <span href="null" className="intro-connect">Connect now &#8594; </span>
         </div>

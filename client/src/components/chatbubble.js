@@ -14,8 +14,6 @@ export default function Chatbubble({data}) {
     }
     const Chatbubbles  = {
         "float":`${from === data.from ? "right":"left"}`,
-        
-        
         "fontFamily": "'Lato', sans-serif",
         "color":"#fff",
         "fontWeight":"500",
@@ -24,8 +22,10 @@ export default function Chatbubble({data}) {
     const textdiv = {
       "padding":"10px 14px",
       "maxWidth":"40vw",
-      "backgroundColor":"#312244",
+      "backgroundColor":`${from === data.from ? "#6B19FF":"#EDF2FC"}`,
       "borderRadius": `${from === data.from ? "20px 20px 3px 20px":"20px 20px 20px 3px"}`,
+      "color":`${from === data.from ? "white":"black"}`,
+      "boxShadow":"0 1px 2px rgba(0,0,0,0.2)"
     }
     const time ={
         "float":"right",

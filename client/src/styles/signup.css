@@ -53,7 +53,7 @@
   display: inline-block;
   background-color: #ffffff;
   padding: 1rem 1rem;
-  cursor: pointer;
+  cursor:text;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
   transition: all 0.3s;
 }
@@ -124,8 +124,9 @@
 @media (min-width: 375px) {
   .maindiv-signin .intro {
     width: 100%;
+    /* height: 10%; */
     text-align: center;
-    height: 14rem;
+    padding-left: 5px;
   }
   .maindiv-signin .intro .heading-primary {
     font-size: 1.6rem;
@@ -142,6 +143,7 @@
   .signdiv {
     width: 80vw;
     border-radius: 5px;
+    margin-top: -5rem;
   }
   .heading-primary--isMob {
     display: inline-block;
@@ -151,6 +153,7 @@
   .maindiv-signin .intro {
     width: 50%;
     height: auto;
+    padding-left: 32px;
   }
   .maindiv-signin .intro-connect {
     margin-left: 0rem;
@@ -166,6 +169,7 @@
   }
   .signdiv {
     width: 40vw;
+    margin-top: 5rem;
   }
   .heading-primary--isMob {
     display: hidden;

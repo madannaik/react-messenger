@@ -12,7 +12,7 @@ app.get('/', (req, res) => res.send({ status: 'ok' }));
 app.post("/", async function (req, res) {
 
   const { username, email, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     let userExist;
     SignUpModel.findOne({ email: email }, async function (err, docs) {
@@ -41,7 +41,7 @@ app.post("/", async function (req, res) {
                   templateId: 'd-d813e697b0e6406b9f5ae77f71b81db5',
 
                 });
-                console.log("mail sent")
+                // console.log("mail sent")
                 const userRegister = await user.save();
                 await SignUpModel.findByIdAndUpdate({ _id: userRegister["_id"] }, { $addToSet: { friends: userRegister["_id"] } });
                 res.send({ message: "user registered successfully!!", status: "200" });

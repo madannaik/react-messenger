@@ -1,7 +1,7 @@
 import SignUpModel from "../models/dataschema.js"
 
 export const addFriends = async (req,res)=>{
-    console.log(req.body.addFriendId);
+    // console.log(req.body.addFriendId);
    
     SignUpModel.findByIdAndUpdate(
         {_id:req.body._id},

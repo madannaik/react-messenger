@@ -1,4 +1,4 @@
-import { Divider, IconButton, Input } from "@chakra-ui/react";
+import { Divider, Button, Input, Heading } from "@chakra-ui/react";
 import { React, useEffect, useState } from 'react';
 import Avatar from "../assets/boy.svg"
 import { ChatBox } from "../components/chatbox";
@@ -55,18 +55,18 @@ export const ChatScreen = () => {
             <div className="chatmaindiv">
                 <div className="online-div">
                     <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
-                        <IconButton icon={<SpinnerIcon />} variant="outline" colorScheme="whiteAlpha" onClick={() => {
+                        <Heading as="h6" color="white" marginTop="3" size="md" textAlign="center" cursor="pointer" width="100%" variant="outline" colorScheme="whiteAlpha" onClick={() => {
                             GetFriends(key?.id).then(data =>
                                 setNames(data.data.sort((x, y) => {
                                     return x.email === loggedUser ? -1 : y === loggedUser ? 1 : 0;
                                 })));
-                        }} />
-                        <Input variant="outline" color="white" placeholder="Search user" onChange={handlechange} />
+                        }} >COR<span className="logo-half">Deᗡ</span></Heading>
+                        {/* <Input variant="outline" color="white" placeholder="Search user" onChange={handlechange} /> */}
 
                     </div>
 
                     <span className="divider">
-                        <Divider orientation="horizontal" />
+                        <Divider orientation="horizontal" backgroundColor="black" />
                     </span>
                     <div className="userdata">
                         {
