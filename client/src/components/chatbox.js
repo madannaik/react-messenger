@@ -41,7 +41,7 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
 
     const ref = useRef(null);
     useEffect(() => {
-        console.log(variant)
+        // console.log(variant)
     })
     const scrollToBottom = () => {
         ref.current.addEventListener('DOMNodeInserted', event => {
@@ -85,7 +85,7 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
             setChatId("");
             GetConverstions({ member1: senderID, member2: receiverID })
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setMessages(data.message);
                     setChatId(data._id);
                     scrollToBottom();
@@ -125,7 +125,11 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
 
     }, []);
 
-
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
 
     const onChange = (event) => {
         setInputText(event.target.value);
@@ -170,11 +174,11 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
                         <Picker onEmojiClick={onEmojiClick} />
                     </div>
 
-                    <Input variant="filled" placeholder="filled" className="catchusertext" onChange={onChange} ref={inputref} />
+                    <Input onKeyPress={handleKeyPress} variant="filled" placeholder="filled" className="catchusertext" onChange={onChange} ref={inputref} />
                     <Button rightIcon={<ArrowRightIcon />} onClick={sendMessage} colorScheme="blue" variant="outline" paddingX={3} paddingY={0} className="send-button" >
                         {variant}
                     </Button>
-                    <IconButton icon={<StarIcon />} _focus={{
+                    <IconButton icon={<StarIcon/>} _focus={{
                         border: "none"
                     }} marginLeft="1vw" className="emoticon" onClick={onClickEmoji}></IconButton>
                 </div>

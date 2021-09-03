@@ -44,7 +44,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
   const id = key?.id;
   const onEnter = (e) => {
     if (e.charCode === 13) {
-      console.log("event caputered");
+      // console.log("event caputered");
       GetAllUsers(key?.id, input).then(data => {
         setusers(data);
         if (data.length === 0) {
