@@ -1,19 +1,24 @@
+import logo from './logo.svg';
 import './App.css';
-import { Login } from './pages/login';
-import { SignUp } from './pages/singUp';
-import  {Route, HashRouter as Router} from 'react-router-dom';
-import { ChatScreen } from './pages/chatScreen';
-import Editprofile from './pages/Editprofile';
 
 function App() {
- return (
-    
-    <Router basename={'/client'}> 
-          <Route exact path="/" component={Login}  /> 
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/chat" component={ChatScreen}  /> 
-          <Route exact path="/chat/editprofile" component={Editprofile}  /> 
-    </Router>
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
