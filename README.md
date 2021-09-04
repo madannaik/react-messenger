@@ -1,18 +1,6 @@
 # React-messesnger
 
 
-Features-implemented or yet to be implemented
-
-- [x] Login/SignUP
-- [x] Integration of socket.io
-- [x] Edit profile
-- [x] Chat with any users (annonymously😎) 
-- [x] UI/UX 
-- [x] Responsiveness
-- [ ] Hosting
-
-
-
 #### Features to added (Open for any contributions)
 
 - [ ] Integration of passport,JWT .
