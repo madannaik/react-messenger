@@ -9,8 +9,8 @@ function App() {
  return (
     
     <Router basename={'/client'}> 
-          <Route exact path="/" component={Login}  /> 
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" component={SignUp}  /> 
+          <Route exact path="/login" component={Login} />
           <Route exact path="/chat" component={ChatScreen}  /> 
           <Route exact path="/chat/editprofile" component={Editprofile}  /> 
     </Router>

@@ -71,7 +71,7 @@ export const SignUp = () => {
             <div className="signbox" >
 
                 <div className="letters signin-letters" >SIGN UP</div>
-                <p className="letters-login" >Already have an?  <Link to="/" style={{ color: "blue" }}>Log In</Link></p>
+                <p className="letters-login" >Already have an?  <Link to="/login" style={{ color: "blue" }}>Log In</Link></p>
                 <Input borderRadius={"xl"} placeholder="User Name" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} onChange={handleChangeUsername} />
                 <Input borderRadius={"xl"} placeholder="Email" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"email"} onChange={handleChangeEmail} />
                 <Input borderRadius={"xl"} placeholder="Password" _placeholder={{ color: 'black' }} borderColor={"#003049"} textColor={"black"} marginBottom={"5"} type={"password"} onChange={handleChangePassword} />

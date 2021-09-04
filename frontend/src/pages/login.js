@@ -72,7 +72,7 @@ export const Login = () => {
         <div className="logindiv">
             <div className="loginbox">
                 <div className="letters login-letters">Log In</div>
-                <p className="letters-signin" >Dont have an account?  <Link to="/signup" style={{color:"blue"}}>Sign Up</Link></p>
+                <p className="letters-signin" >Dont have an account?  <Link to="/" style={{color:"blue"}}>Sign Up</Link></p>
                 <Input placeholder="Email" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} marginTop={"4"} type={"email"} onChange={handleChangeEmail} />
                 <Input placeholder="Password" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} type={"password"} onChange={handleChangePassword} />
                 <Button
