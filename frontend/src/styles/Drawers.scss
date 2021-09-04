@@ -1,0 +1,142 @@
+.divider {
+  margin: 1rem 1rem;
+}
+.requests-data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  // height: 60vh;
+  overflow-y: hidden;
+  background-color: transparent;
+  .singlecard {
+    width: 100%;
+    min-height: 50px;
+    /* background-color: #caf0f8; */
+    overflow-y: hidden;
+    background-color: #c39ee9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 3px 0;
+    text-overflow: ellipsis;
+    &:hover {
+      // background-color: aquamarine;
+    }
+    .avatar-cnt {
+      width: 17.5%;
+      height: 85%;
+      margin-top: 1.25%;
+      margin-left: 2%;
+      margin-bottom: 1.25%;
+      border-radius: 50%;
+      background-color: white;
+      object-fit: cover;
+      /* padding: 3px; */
+    }
+    .avatar-cnt .avatar {
+      border-radius: 50%;
+      padding: 4px;
+      margin: 0;
+    }
+    .username {
+      font-size: 0.9rem;
+      margin: 1rem 0 0 0.5rem;
+      font-family: "Poppins", sans-serif;
+      text-overflow: ellipsis;
+      width: 70%;
+      overflow-x: hidden;
+      white-space: nowrap;
+    }
+    .add-people {
+      margin-top: 5.5%;
+      margin-right: 5.5%;
+    }
+  }
+}
+.online-div-mob {
+  .online-div {
+    width: 20vw;
+    height: 100vh;
+    background-color: #6d23b6;
+    /* margin: 7vh 0 5vh 10vw; */
+    border-radius: 2px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 2vw;
+  }
+  .divider {
+    margin: 1rem 1rem;
+  }
+  .userdata {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 80vh;
+    overflow-y: scroll;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #fe6d73;
+  }
+  .userdata::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .userdata::-webkit-scrollbar {
+    width: 2px;
+  }
+  .singlecard {
+    width: 100%;
+    min-height: 50px;
+    /* background-color: #caf0f8; */
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 3px 0;
+    text-overflow: ellipsis;
+  }
+  .singlecard:hover {
+    background-color: aquamarine;
+  }
+  .avatar-cnt {
+    width: 40px;
+    height: 40px;
+    margin-top: 2.5%;
+    margin-left: 2%;
+    border-radius: 40px;
+    background-color: #6d23b6;
+    object-fit: cover;
+    /* padding: 3px; */
+  }
+  .avatar-cnt .avatar {
+    border-radius: 50%;
+    padding: 4px;
+    margin: 0;
+  }
+
+  .userdata .username {
+    font-size: 0.9rem;
+    margin: 1rem 0 0 0.5rem;
+    font-family: "Poppins", sans-serif;
+    text-overflow: ellipsis;
+    width: 70%;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
+
+  .singlecard > span {
+    width: 4px;
+    height: 4px;
+    background: green;
+    border-radius: 4px;
+    display: inline;
+    margin-top: 3.8vh;
+  }
+}
