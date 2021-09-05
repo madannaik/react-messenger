@@ -1,12 +1,21 @@
 import "../styles/signup.css";
-import { React, useState } from "react"
+import { React, useState, useEffect } from "react"
 import { Button, Input } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { useToast } from "@chakra-ui/react"
 import { SingUpUser } from "../services/API/auth";
 import { bgSvg } from "../utils/misc";
+import { useHistory } from "react-router-dom";
+const key = JSON.parse(localStorage.getItem("item"));
 
 export const SignUp = () => {
+    let history = useHistory();
+    useEffect(() => {
+        const keystate = key?.isLoggedIn;
+        if (keystate) {
+            history.push("/chat");
+        }
+    }, [])
     const toast = useToast();
     const [isloading, setisloading] = useState(false);
     const [email, setemail] = useState("");
@@ -30,7 +39,7 @@ export const SignUp = () => {
 
         }
         else {
-            if (password.length !== 8) {
+            if (!password.length >= 8) {
                 // console.log(password.length);
                 toast({
                     title: "Password should min 8 char",
@@ -52,7 +61,7 @@ export const SignUp = () => {
                             isClosable: true,
                         });
                         if (data.status === "200") {
-
+                            history.push("/login");
                         }
 
                     });

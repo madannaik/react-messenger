@@ -25,6 +25,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   /* padding: 2vw; */
+  position: relative;
 }
 .divider {
   margin: 1rem 1rem;

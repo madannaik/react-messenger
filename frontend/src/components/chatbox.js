@@ -11,17 +11,17 @@ import DrawerExample from "../components/isOnlineMOb";
 import React from "react";
 import { DrawerMenu } from "../components/Drawer";
 import { GetConverstions } from "../services/API/user-service";
-import { createBreakpoints } from "@chakra-ui/theme-tools"
+// import { createBreakpoints } from "@chakra-ui/theme-tools"
 // 2. Update the breakpoints as key-value pairs
 import { useBreakpointValue } from "@chakra-ui/react"
 
 export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
-    const breakpoints = createBreakpoints({
-        sm: "320px",
-        md: "768px",
-        lg: "960px",
-        xl: "1200px",
-    })
+    // const breakpoints = createBreakpoints({
+    //     sm: "320px",
+    //     md: "768px",
+    //     lg: "960px",
+    //     xl: "1200px",
+    // })
     const variant = useBreakpointValue({
         sm: "",
         md: "Send",

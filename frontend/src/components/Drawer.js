@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { ChatIcon } from '@chakra-ui/icons'
 import { useHistory, Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 
 import Avatar from "../assets/boy.svg"
@@ -40,30 +40,39 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
     }));
     history.push("/");
   }
-
+  useEffect(() => {
+    getAllUsers();
+    return () => {
+      setusers([])
+    }
+  }, []);
   const id = key?.id;
   const onEnter = (e) => {
     if (e.charCode === 13) {
       // console.log("event caputered");
-      GetAllUsers(key?.id, input).then(data => {
-        setusers(data);
-        if (data.length === 0) {
-          toast({
-            title: "No users found",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-
-          });
-        }
-      });
+      getAllUsers();
     }
   }
+  const getAllUsers = () => {
+    GetAllUsers(key?.id, input).then(data => {
+      setusers(data);
+      if (data.length === 0) {
+        toast({
+          title: "No users found",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
 
+        });
+      }
+    });
+  }
   const addFriends = (data) => {
     AddFriends(id, data._id).then(
-      data => console.log(data)
+
+      data => { console.log(data) }
     )
+    setusers(users.filter((e) => { return e._id !== data._id }))
   }
 
   return (
@@ -98,7 +107,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
                 </span>
                 <div className="requests-data">
                   {users.map(data => {
-                    return <div className="singlecard" onClick={() => addFriends(data)}>
+                    return <div className="singlecard" key={data._id} onClick={() => addFriends(data)}>
                       <div className="avatar-cnt">
                         <img src={data.image ?? Avatar}
                           alt={"avatar"}

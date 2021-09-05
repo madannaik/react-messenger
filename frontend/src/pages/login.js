@@ -1,11 +1,11 @@
 import "../styles/login.css";
-import { React, useState, useContext ,useEffect} from "react"
+import { React, useState, useEffect } from "react"
 import { Input } from "@chakra-ui/react";
 import { Button, useToast } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { LoginUser } from "../services/API/auth";
-const key = JSON.parse(localStorage.getItem("item"));
+// const key = JSON.parse(localStorage.getItem("item"));
 
 export const Login = () => {
     const toast = useToast();
@@ -15,19 +15,16 @@ export const Login = () => {
     let history = useHistory();
     const handleChangeEmail = (event) => setemail(event.target.value);
     const handleChangePassword = (event) => setpassword(event.target.value);
-  
     // console.log(context.store.getState());
     const key = JSON.parse(localStorage.getItem("item"));
 
-    
-    
+
+
     useEffect(() => {
-        
         const keystate = key?.isLoggedIn;
-        if(keystate){
+        if (keystate) {
             history.push("/chat");
         }
-    
     }, [])
 
     const handleSubmit = () => {
@@ -42,7 +39,7 @@ export const Login = () => {
             });
         }
         else {
-                LoginUser({ email: email, password: password })
+            LoginUser({ email: email, password: password })
                 .then(data => {
                     setisloading(false)
                     toast({
@@ -56,8 +53,8 @@ export const Login = () => {
                             id: data.id,
                             username: data.username,
                             email: data.email,
-                            image:data.image,
-                            isLoggedIn:true
+                            image: data.image,
+                            isLoggedIn: true
                         }));
                         history.push('/chat')
                         console.log("you can go further");
@@ -72,7 +69,7 @@ export const Login = () => {
         <div className="logindiv">
             <div className="loginbox">
                 <div className="letters login-letters">Log In</div>
-                <p className="letters-signin" >Dont have an account?  <Link to="/" style={{color:"blue"}}>Sign Up</Link></p>
+                <p className="letters-signin" >Dont have an account?  <Link to="/" style={{ color: "blue" }}>Sign Up</Link></p>
                 <Input placeholder="Email" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} marginTop={"4"} type={"email"} onChange={handleChangeEmail} />
                 <Input placeholder="Password" _placeholder={{ color: '#000' }} borderColor={"#003049"} textColor={"black"} marginBottom={"8"} type={"password"} onChange={handleChangePassword} />
                 <Button
@@ -91,7 +88,7 @@ export const Login = () => {
                     color={"whitesmoke"}
                 >
                     Submit
-                </Button>         
+                </Button>
             </div>
         </div>
     </div>
