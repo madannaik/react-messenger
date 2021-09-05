@@ -43,7 +43,7 @@ export const Login = () => {
                 .then(data => {
                     setisloading(false)
                     toast({
-                        title: `${data.message}`,
+                        title: `wrong password`,
                         status: "success",
                         duration: 9000,
                         isClosable: true,
@@ -57,7 +57,7 @@ export const Login = () => {
                             isLoggedIn: true
                         }));
                         history.push('/chat')
-                        console.log("you can go further");
+                        // console.log("you can go further");
                     }
 
                 });
