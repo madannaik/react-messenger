@@ -38,7 +38,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
       image: null,
       isLoggedIn: false,
     }));
-    history.push("/");
+    history.push("/login");
   }
   useEffect(() => {
     getAllUsers();
