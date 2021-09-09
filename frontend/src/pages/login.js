@@ -43,7 +43,7 @@ export const Login = () => {
                 .then(data => {
                     setisloading(false)
                     toast({
-                        title: `wrong password`,
+                        title: `${data.message}`,
                         status: "success",
                         duration: 9000,
                         isClosable: true,
