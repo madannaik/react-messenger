@@ -1,7 +1,7 @@
 import Avatar from "../assets/boy.svg";
 import "../styles/chatbox.css";
-import { Image, Box, Input, Button, IconButton, HStack, useDisclosure } from "@chakra-ui/react";
-import { ArrowRightIcon, SettingsIcon, StarIcon, ViewIcon } from "@chakra-ui/icons";
+import { Image, Box, Input, Button, IconButton, HStack, useDisclosure, Tooltip } from "@chakra-ui/react";
+import { ArrowRightIcon, SettingsIcon, PlusSquareIcon, StarIcon, ViewIcon } from "@chakra-ui/icons";
 import Chatbubble from '../components/chatbubble';
 import { useEffect, useRef, useState } from 'react';
 import { socketData } from "../utils/socket"
@@ -53,6 +53,7 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
     const sendMessage = async () => {
         // console.log(inputText);
         if (inputText.length && chatId !== "") {
+            onClickEmoji();
             let text = inputText;
             const data = { from: from, to: username, text: text, date: todaysDate, id: chatId };
             const msg = { from: from, to: username, text: text, date: todaysDate };
@@ -126,8 +127,10 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
     }, []);
 
     const handleKeyPress = (event) => {
+
         if (event.key === 'Enter') {
             sendMessage();
+
         }
     }
 
@@ -155,7 +158,10 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
                     <HStack className="settings-menu">
 
                         <IconButton className="view-icon" icon={<ViewIcon />} onClick={onLeftOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
-                        <IconButton icon={<SettingsIcon />} onClick={onOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
+                        <Tooltip label="Add Friends">
+                            <IconButton icon={<PlusSquareIcon />} onClick={onOpen} backgroundColor="transparent" _focus={{ border: "none" }} />
+                        </Tooltip>
+
                     </HStack>
                 </div>
                 <div className="chatdisplayspace" ref={ref} >
@@ -178,9 +184,12 @@ export const ChatBox = ({ username, receiverID, avatar, handleclick }) => {
                     <Button rightIcon={<ArrowRightIcon />} onClick={sendMessage} colorScheme="blue" variant="outline" paddingX={3} paddingY={0} className="send-button" >
                         {variant}
                     </Button>
-                    <IconButton icon={<StarIcon/>} _focus={{
-                        border: "none"
-                    }} marginLeft="1vw" className="emoticon" onClick={onClickEmoji}></IconButton>
+                    <Tooltip label="Emoji">
+                        <IconButton icon={<StarIcon />} _focus={{
+                            border: "none"
+                        }} marginLeft="1vw" className="emoticon" onClick={onClickEmoji}></IconButton>
+                    </Tooltip>
+
                 </div>
             </div>
         </div>

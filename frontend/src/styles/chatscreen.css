@@ -28,7 +28,9 @@
   position: relative;
 }
 .divider {
-  margin: 1rem 1rem;
+  /* margin: 1rem 1rem ; */
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
   background-color: #555;
 }
 .userdata {

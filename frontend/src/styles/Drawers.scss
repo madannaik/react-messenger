@@ -1,5 +1,5 @@
 .divider {
-  margin: 1rem 1rem;
+  // margin: 1rem 1rem;
 }
 .requests-data {
   display: flex;
@@ -52,6 +52,9 @@
     .add-people {
       margin-top: 5.5%;
       margin-right: 5.5%;
+      font-size: .8rem;
+      font-weight: bold;
+      cursor: pointer;
     }
   }
 }

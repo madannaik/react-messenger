@@ -1,11 +1,11 @@
-import { Divider,  Heading } from "@chakra-ui/react";
+import { Divider, Heading } from "@chakra-ui/react";
 import { React, useEffect, useState } from 'react';
 import Avatar from "../assets/boy.svg"
 import { ChatBox } from "../components/chatbox";
 import { GetFriends } from "../services/API/user-service";
 import { useHistory } from "react-router";
 import "../styles/chatscreen.css";
-import { Spinner } from "@chakra-ui/react"
+import { Spinner, Tooltip } from "@chakra-ui/react"
 
 export const ChatScreen = () => {
     const key = JSON.parse(localStorage.getItem("item"));
@@ -53,21 +53,25 @@ export const ChatScreen = () => {
             <div className="chatmaindiv">
                 <div className="online-div">
                     <div style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap" }}>
-                        <Heading as="h6" color="white" marginTop="3" size="md" textAlign="center" cursor="pointer" width="100%" variant="outline" colorScheme="whiteAlpha" onClick={() => {
-                            setNames([]);
-                            GetFriends(key?.id).then(data =>
-                                setNames(data.data.sort((x, y) => {
-                                    return x.email === loggedUser ? -1 : y === loggedUser ? 1 : 0;
-                                })));
-                        }} >COR<span className="logo-half">Deᗡ</span></Heading>
+                        <Tooltip label="Refresh">
+                            <Heading as="h6" color="white" marginTop="3" size="md" textAlign="center" cursor="pointer" width="100%" variant="outline" colorScheme="whiteAlpha" onClick={() => {
+                                setNames([]);
+                                GetFriends(key?.id).then(data =>
+                                    setNames(data.data.sort((x, y) => {
+                                        return x.email === loggedUser ? -1 : y === loggedUser ? 1 : 0;
+                                    })));
+                            }} >COR<span className="logo-half">Deᗡ</span></Heading>
+                        </Tooltip>
+
                         {/* <Input variant="outline" color="white" placeholder="Search user" onChange={handlechange} /> */}
 
                     </div>
 
                     <span className="divider">
-                        <Divider orientation="horizontal" backgroundColor="black" />
+                        <Divider mb="1rem" mt=".5rem" orientation="horizontal" backgroundColor="black" />
                     </span>
                     <div className="userdata">
+                        <Heading color="white" fontWeight="400" fontSize="1rem" mb=".5rem" textAlign="center">ChatList</Heading>
                         <Spinner top="50%" left="50%" display={Names.length === 0 ? "block" : "none"} position="absolute" color="white" />
                         {
                             Names.map((data) => {

@@ -94,7 +94,7 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
           <DrawerBody>
             <Stack spacing="24px">
               <Box>
-                <FormLabel htmlFor="username">Name</FormLabel>
+                <FormLabel htmlFor="username">Add Friends</FormLabel>
                 <Input
                   ref={firstField}
                   id="username"
@@ -116,7 +116,8 @@ export const DrawerMenu = ({ isOpen, onOpen, onClose }) => {
                       </div>
 
                       <h6 className="username">{data.username}</h6>
-                      <ChatIcon color={"white"} className="add-people" />
+                      {/* <ChatIcon color={"white"} className="add-people" /> */}
+                      <h4 className="add-people" >Add</h4>
                     </div>
                   })}
 
