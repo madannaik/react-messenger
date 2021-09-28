@@ -3,11 +3,10 @@
 
 LIVE LINK -> [https://react-messenger-rho.vercel.app/](https://react-messenger-rho.vercel.app/)
 
-DUMMY ACCOUNT
 
 <hr>
 
-demo account - 
+Demo account - 
 ```
 pjavadzrhdvpwgwfyj@tbbyt.net
 
